@@ -1,8 +1,6 @@
 name: Collect ski area candidates (OSM, unverified)
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '31 3 1 * *'
 permissions:
   contents: write
 jobs:
