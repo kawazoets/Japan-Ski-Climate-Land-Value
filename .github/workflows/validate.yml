@@ -1,6 +1,5 @@
 name: Validate research tables
 on:
-  push:
   workflow_dispatch:
 jobs:
   validate:
