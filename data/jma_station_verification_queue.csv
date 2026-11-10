@@ -1,0 +1,14 @@
+resort_name,resort_latitude,resort_longitude,nearest_land_price_distance_km,municipality_proxy_code,jma_station_id,jma_station_name,jma_station_latitude,jma_station_longitude,jma_station_altitude_m,station_distance_km,snow_observation_available,station_verification_status
+伊ノ沢市民スキー場,43.7475201,142.3314261,1.055,01204,,,,,,,,not_checked
+富良野スキー場,43.3326667,142.3393688,2.514,01229,,,,,,,,not_checked
+新得山スキー場,43.0910508,142.8266896,1.172,01635,,,,,,,,not_checked
+マウントレースイスキー場,43.0463437,141.9795735,1.379,01209,,,,,,,,not_checked
+美幌町リリー山スキー場,43.8427723,144.0903315,1.756,01543,,,,,,,,not_checked
+枝幸町三笠山スキー場,44.9354442,142.5635833,1.257,01514,,,,,,,,not_checked
+美深スキー場,44.4890122,142.3605945,0.822,01469,,,,,,,,not_checked
+興部町営スキー場,44.4574109,143.1129679,1.622,01561,,,,,,,,not_checked
+北見市留辺蘂町八方台スキー場,43.7679308,143.6110835,1.8,01208,,,,,,,,not_checked
+かもい岳国際スキー場,43.5201532,142.0067197,2.198,01227,,,,,,,,not_checked
+上富良野町日の出スキー場,43.4630872,142.4814966,0.692,01460,,,,,,,,not_checked
+下川町スキー場,44.2936541,142.6393179,0.52,01468,,,,,,,,not_checked
+上川町営中山スキー場,43.8518262,142.7798868,0.811,01457,,,,,,,,not_checked
