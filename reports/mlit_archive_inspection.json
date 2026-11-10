@@ -1,0 +1,41 @@
+{
+  "archive_url": "https://nlftp.mlit.go.jp/ksj/gml/data/L01/L01-26//L01-26_GML.zip",
+  "archive_bytes": 20898568,
+  "sha256": "fad8bbe76d25b682ccf761a492ddc2de001e0345569e044481d62ea84233faf8",
+  "member_count": 8,
+  "members": [
+    {
+      "name": "L01-26_GML/",
+      "bytes_uncompressed": 0
+    },
+    {
+      "name": "L01-26_GML/KS-META-L01-26.xml",
+      "bytes_uncompressed": 12349
+    },
+    {
+      "name": "L01-26_GML/L01-26.dbf",
+      "bytes_uncompressed": 40755380
+    },
+    {
+      "name": "L01-26_GML/L01-26.geojson",
+      "bytes_uncompressed": 84021281
+    },
+    {
+      "name": "L01-26_GML/L01-26.prj",
+      "bytes_uncompressed": 147
+    },
+    {
+      "name": "L01-26_GML/L01-26.shp",
+      "bytes_uncompressed": 715920
+    },
+    {
+      "name": "L01-26_GML/L01-26.shx",
+      "bytes_uncompressed": 204620
+    },
+    {
+      "name": "L01-26_GML/L01-26.xml",
+      "bytes_uncompressed": 262153344
+    }
+  ],
+  "data_status": "downloaded_and_zip_verified_not_yet_parsed"
+}
