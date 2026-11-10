@@ -1,5 +1,9 @@
 name: Collect directory candidates
 on:
+  push:
+    paths:
+      - 'scripts/collect_directory.py'
+      - '.github/workflows/collect-directory.yml'
   workflow_dispatch:
   schedule:
     - cron: '23 4 2 * *'
