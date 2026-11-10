@@ -1,10 +1,5 @@
 name: Classify resort directory candidates
 on:
-  push:
-    paths:
-      - 'data/directory_candidates.csv'
-      - 'scripts/classify_directory.py'
-      - '.github/workflows/classify-directory.yml'
   workflow_dispatch:
 permissions:
   contents: write
