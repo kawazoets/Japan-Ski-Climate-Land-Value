@@ -1,0 +1,10 @@
+metric,season,value,unit,comparison_season,comparison_value,coverage_count,source_url,notes
+ski_areas_in_daily_dataset,2025-26,383,areas,,,383,https://snowline.jp/ja/season/recap/2025-26,Site coverage not national official census
+areas_reporting_season_dates,2025-26,360,areas,,,360,https://snowline.jp/ja/season/recap/2025-26,Reporting subset
+areas_with_both_season_openings,2025-26,346,areas,,,346,https://snowline.jp/ja/season/recap/2025-26,Matched 2024-25 and 2025-26
+opened_later_than_previous_season,2025-26,148,areas,2024-25,,346,https://snowline.jp/ja/season/recap/2025-26,Comparison based on opening dates
+opened_earlier_than_previous_season,2025-26,35,areas,2024-25,,346,https://snowline.jp/ja/season/recap/2025-26,Comparison based on opening dates
+opened_within_three_days_previous_season,2025-26,163,areas,2024-25,,346,https://snowline.jp/ja/season/recap/2025-26,Within 3 days is not exact same date
+average_snowfall_change_matched,2025-26,-26,percent,2024-25,,318,https://snowline.jp/ja/season/recap/2025-26,Two-season weather comparison not long-term warming trend
+average_max_snow_depth_change_matched,2025-26,-25,percent,2024-25,,318,https://snowline.jp/ja/season/recap/2025-26,Two-season weather comparison not long-term warming trend
+average_days_snow_depth_ge_100cm,2025-26,53,days,2024-25,86,318,https://snowline.jp/ja/season/recap/2025-26,Not operating days
