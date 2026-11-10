@@ -25,3 +25,13 @@ Research question: Does shortening ski resort operating season correlate with ch
 - MLIT API documentation: https://www.reinfolib.mlit.go.jp/help/apiManual/
 
 No automated scraping of websites without verifying terms, permissions, and data quality.
+
+## Verified scope notes (2026-11-10)
+- The 417 count is **not** a publicly verified roster of 417 named facilities. Kyodo's January 2026 reporting attributes it to the Japan Ropeway Association's count of operating lift-served ski areas in 2025. Prefecture counts: Hokkaido 92, Nagano 80, Niigata 46. Source: https://news.jp/i/1380113804442730560
+- MLIT's XPT002 land-price point API covers published land-price points since 1995 and prefectural land-price survey points since 1997: https://www.reinfolib.mlit.go.jp/help/apiManual/xpt002/
+- MLIT's XIT001 transaction-price API covers transactions from 2005 Q3 onward: https://www.reinfolib.mlit.go.jp/help/apiManual/xit001/
+- MLIT says API usage requires an application: https://www.mlit.go.jp/tochi_fudousan_kensetsugyo/tochi_fudousan_kensetsugyo_tk17_000001_00038.html
+- Prefer downloadable GIS/CSV land-price data if API credentials are not available. Do not commit any API key to a public repository.
+
+## Research caution
+Resort count is affected by closures, mergers, renamed facilities and changes in lift operations. Avoid survivor bias: include historic closures in a separate cohort, rather than examining only today's operating resorts. Nearby land-price points may be sparse or in different land-use categories; record distances and land-use explicitly.
