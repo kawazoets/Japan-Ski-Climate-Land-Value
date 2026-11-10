@@ -26,3 +26,8 @@ Compare exposed municipalities with otherwise similar snow-region municipalities
 - https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo17_hh_000001_00078.html
 - https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-L01-2026.html
 - https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo17_hh_000001_00089.html
+
+## Important discovery: one-year archive may contain historical price columns
+The official **2026 L01 schema** documents historic annual land-price columns from 1983 to 2026 for standard sites, alongside a selection-year flag. This means a 2026 dataset may supply a historical panel **without downloading 20 separate annual archives**. These values apply to the site's historical observation availability; zero is documented as 'not selected', **not a zero land price**. Historical site selection and attribute changes must still be audited. Official specification: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-L01-2026.html (L01_061 through L01_148).
+
+The first discovery script returned zero links because the download UI uses dynamic controls rather than direct ZIP anchors. A successful GitHub job does not imply that the archive was found. Do not invent archive URLs.
