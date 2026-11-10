@@ -1,0 +1,4 @@
+source_id,dataset,provider,year,coverage,download_url,license,access,notes
+jra_2025_count,aggregate resort count,Japan Ropeway Association via Kyodo,2025,417 operating lift-served resorts,https://news.jp/i/1380113804442730560,news report,public,No verified facility-level roster supplied
+mlit_2026_koji,official assessed land prices,MLIT,2026,national point locations and JPY per square metre,https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-L01-2026.html,check individual download terms,public GIS download,Use point-level coordinates and stable identifiers
+mlit_2026_chika,official prefectural land price survey,MLIT,2026,national point locations and JPY per square metre,https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo17_hh_000001_00089.html,check individual download terms,public GIS download,Annual July 1 reference date
