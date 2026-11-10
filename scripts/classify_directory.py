@@ -27,7 +27,7 @@ def main():
             row["possible_duplicate_of"]=""
             seen[key]=row["resort_name"]
     with OUT.open("w",encoding="utf-8",newline="") as f:
-        fields=list(rows[0])+["candidate_class","normalized_name","possible_duplicate_of"] if rows else []
+        fields=list(rows[0]) if rows else []
         # Keys added to row already; avoid duplicates
         fields=list(dict.fromkeys(fields))
         w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(rows)
