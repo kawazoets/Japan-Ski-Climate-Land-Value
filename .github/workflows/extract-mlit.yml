@@ -1,0 +1,34 @@
+name: Extract 2026 MLIT land-price point data
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/extract_mlit_geojson.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mlit-2026-land-price-points
+          path: data/mlit_2026_all_points.csv
+          retention-days: 30
+      - name: Save schema only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/mlit_geojson_schema.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record official land-price GeoJSON schema and point count"
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then exit 0; fi
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
