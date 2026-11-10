@@ -1,0 +1,66 @@
+resort_name,resort_latitude,resort_longitude,station_rank,jma_station_id,jma_station_name,jma_station_region,jma_station_address,jma_station_type,jma_station_latitude,jma_station_longitude,jma_station_altitude_m,straight_line_distance_km,station_suitability,snow_observation_2016_2026,source_url
+伊ノ沢市民スキー場,43.7475201,142.3314261,1,12927,旭川,上川,旭川市宮前1条　旭川地方気象台,官,43.756667,142.371667,120,3.388,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+伊ノ沢市民スキー場,43.7475201,142.3314261,2,12932,東神楽,上川,上川郡東神楽町東2線　旭川航空気象観測所,官,43.67,142.446667,211,12.653,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+伊ノ沢市民スキー場,43.7475201,142.3314261,3,15910,深川,空知,深川市一已町一已,雪,43.718333,142.073333,55,20.989,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+伊ノ沢市民スキー場,43.7475201,142.3314261,4,12935,美瑛,上川,上川郡美瑛町原野5線,雪,43.588333,142.493333,250,21.975,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+伊ノ沢市民スキー場,43.7475201,142.3314261,5,15915,芦別,空知,芦別市北2条東,雪,43.52,142.19,91,27.741,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+富良野スキー場,43.3326667,142.3393688,1,12940,富良野,上川,富良野市東町,雪,43.333333,142.4,174,4.904,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+富良野スキー場,43.3326667,142.3393688,2,15915,芦別,空知,芦別市北2条東,雪,43.52,142.19,91,24.071,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+富良野スキー場,43.3326667,142.3393688,3,12945,幾寅,上川,空知郡南富良野町幾寅,雪,43.168333,142.568333,350,26.034,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+富良野スキー場,43.3326667,142.3393688,4,12935,美瑛,上川,上川郡美瑛町原野5線,雪,43.588333,142.493333,250,31.026,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+富良野スキー場,43.3326667,142.3393688,5,12932,東神楽,上川,上川郡東神楽町東2線　旭川航空気象観測所,官,43.67,142.446667,211,38.495,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+新得山スキー場,43.0910508,142.8266896,1,20930,新得,十勝,上川郡新得町4条南,雪,43.076667,142.84,178,1.93,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+新得山スキー場,43.0910508,142.8266896,2,12945,幾寅,上川,空知郡南富良野町幾寅,雪,43.168333,142.568333,350,22.659,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+新得山スキー場,43.0910508,142.8266896,3,20940,芽室,十勝,河西郡芽室町西3条南,雪,42.9,143.043333,90,27.6,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+新得山スキー場,43.0910508,142.8266896,4,20943,帯広,十勝,帯広市東4条南　帯広測候所,官,42.921667,143.211667,38,36.533,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+新得山スキー場,43.0910508,142.8266896,5,12950,占冠,上川,勇払郡占冠村中央,雪,42.978333,142.395,332,37.258,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+マウントレースイスキー場,43.0463437,141.9795735,1,15925,夕張,空知,夕張市鹿の谷山手町,雪,43.038333,141.956667,293,2.064,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+マウントレースイスキー場,43.0463437,141.9795735,2,15923,岩見沢,空知,岩見沢市5条東　岩見沢特別地域気象観測所,官,43.211667,141.785,42,24.233,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+マウントレースイスキー場,43.0463437,141.9795735,3,21900,安平,胆振,勇払郡安平町安平,雪,42.815,141.828333,33,28.519,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+マウントレースイスキー場,43.0463437,141.9795735,4,14910,新篠津,石狩,石狩郡新篠津村第46線北,雪,43.22,141.645,9,33.316,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+マウントレースイスキー場,43.0463437,141.9795735,5,21905,穂別,胆振,勇払郡むかわ町穂別,雪,42.761667,142.143333,56,34.35,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+美幌町リリー山スキー場,43.8427723,144.0903315,1,17965,女満別,ｵﾎｰﾂｸ,網走郡大空町女満別中央　女満別航空気象観測所,官,43.88,144.163333,33,7.169,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+美幌町リリー山スキー場,43.8427723,144.0903315,2,17950,津別,ｵﾎｰﾂｸ,網走郡津別町豊永,雪,43.701667,144.033333,100,16.344,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+美幌町リリー山スキー場,43.8427723,144.0903315,3,17925,北見,ｵﾎｰﾂｸ,北見市広郷,雪,43.776667,143.841667,104,21.264,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+美幌町リリー山スキー場,43.8427723,144.0903315,4,17917,網走,ｵﾎｰﾂｸ,網走市台町　網走地方気象台,官,44.016667,144.278333,38,24.506,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+美幌町リリー山スキー場,43.8427723,144.0903315,5,17915,佐呂間,ｵﾎｰﾂｸ,常呂郡佐呂間町西富,雪,44.018333,143.76,54,32.876,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+枝幸町三笠山スキー場,44.9354442,142.5635833,1,11917,北見枝幸,宗谷,枝幸郡枝幸町本町　北見枝幸特別地域気象観測所,官,44.94,142.585,7,1.76,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+枝幸町三笠山スキー場,44.9354442,142.5635833,2,11920,歌登,宗谷,枝幸郡枝幸町歌登東町,雪,44.841667,142.48,14,12.333,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+枝幸町三笠山スキー場,44.9354442,142.5635833,3,11915,中頓別,宗谷,枝幸郡中頓別町上駒,雪,44.965,142.28,25,22.557,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+枝幸町三笠山スキー場,44.9354442,142.5635833,4,12905,音威子府,上川,中川郡音威子府村音威子府,雪,44.726667,142.265,40,33.066,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+枝幸町三笠山スキー場,44.9354442,142.5635833,5,17903,雄武,ｵﾎｰﾂｸ,紋別郡雄武町雄武　雄武特別地域気象観測所,官,44.58,142.963333,14,50.58,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+美深スキー場,44.4890122,142.3605945,1,12900,美深,上川,中川郡美深町西町,雪,44.48,142.341667,77,1.805,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+美深スキー場,44.4890122,142.3605945,2,12910,名寄,上川,名寄市大橋,雪,44.37,142.456667,89,15.275,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+美深スキー場,44.4890122,142.3605945,3,12905,音威子府,上川,中川郡音威子府村音威子府,雪,44.726667,142.265,40,27.488,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+美深スキー場,44.4890122,142.3605945,4,15900,朱鞠内,上川,雨竜郡幌加内町朱鞠内,雪,44.281667,142.161667,255,27.955,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+美深スキー場,44.4890122,142.3605945,5,12925,下川,上川,上川郡下川町南町,雪,44.295,142.636667,143,30.766,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+興部町営スキー場,44.4574109,143.1129679,1,17903,雄武,ｵﾎｰﾂｸ,紋別郡雄武町雄武　雄武特別地域気象観測所,官,44.58,142.963333,14,18.071,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+興部町営スキー場,44.4574109,143.1129679,2,17900,西興部,ｵﾎｰﾂｸ,紋別郡西興部村西興部,雪,44.331667,142.935,120,19.886,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+興部町営スキー場,44.4574109,143.1129679,3,17904,紋別,ｵﾎｰﾂｸ,紋別市南が丘町　紋別特別地域気象観測所,官,44.345,143.355,16,22.934,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+興部町営スキー場,44.4574109,143.1129679,4,17960,紋別小向,ｵﾎｰﾂｸ,紋別市小向　紋別航空気象観測所,官,44.303333,143.403333,18,28.741,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+興部町営スキー場,44.4574109,143.1129679,5,17905,滝上,ｵﾎｰﾂｸ,紋別郡滝上町滝ノ上原野5線南,雪,44.176667,143.061667,165,31.483,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+北見市留辺蘂町八方台スキー場,43.7679308,143.6110835,1,17930,留辺蘂,ｵﾎｰﾂｸ,北見市留辺蘂町大和,雪,43.741667,143.45,325,13.263,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+北見市留辺蘂町八方台スキー場,43.7679308,143.6110835,2,17925,北見,ｵﾎｰﾂｸ,北見市広郷,雪,43.776667,143.841667,104,18.54,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+北見市留辺蘂町八方台スキー場,43.7679308,143.6110835,3,17915,佐呂間,ｵﾎｰﾂｸ,常呂郡佐呂間町西富,雪,44.018333,143.76,54,30.293,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+北見市留辺蘂町八方台スキー場,43.7679308,143.6110835,4,17910,遠軽,ｵﾎｰﾂｸ,紋別郡遠軽町東町,雪,44.053333,143.54,80,32.242,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+北見市留辺蘂町八方台スキー場,43.7679308,143.6110835,5,17950,津別,ｵﾎｰﾂｸ,網走郡津別町豊永,雪,43.701667,144.033333,100,34.716,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+かもい岳国際スキー場,43.5201532,142.0067197,1,15930,滝川,空知,滝川市南滝の川,雪,43.57,141.938333,50,7.817,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+かもい岳国際スキー場,43.5201532,142.0067197,2,15915,芦別,空知,芦別市北2条東,雪,43.52,142.19,91,14.778,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+かもい岳国際スキー場,43.5201532,142.0067197,3,15910,深川,空知,深川市一已町一已,雪,43.718333,142.073333,55,22.68,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+かもい岳国際スキー場,43.5201532,142.0067197,4,15920,美唄,空知,美唄市北美唄町二区,雪,43.363333,141.826667,16,22.702,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+かもい岳国際スキー場,43.5201532,142.0067197,5,15940,秩父別,空知,雨竜郡秩父別町５条,雪,43.78,141.961667,51,29.12,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+上富良野町日の出スキー場,43.4630872,142.4814966,1,12935,美瑛,上川,上川郡美瑛町原野5線,雪,43.588333,142.493333,250,13.959,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+上富良野町日の出スキー場,43.4630872,142.4814966,2,12940,富良野,上川,富良野市東町,雪,43.333333,142.4,174,15.859,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+上富良野町日の出スキー場,43.4630872,142.4814966,3,12932,東神楽,上川,上川郡東神楽町東2線　旭川航空気象観測所,官,43.67,142.446667,211,23.178,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+上富良野町日の出スキー場,43.4630872,142.4814966,4,15915,芦別,空知,芦別市北2条東,雪,43.52,142.19,91,24.351,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+上富良野町日の出スキー場,43.4630872,142.4814966,5,12945,幾寅,上川,空知郡南富良野町幾寅,雪,43.168333,142.568333,350,33.52,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+下川町スキー場,44.2936541,142.6393179,1,12925,下川,上川,上川郡下川町南町,雪,44.295,142.636667,143,0.259,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+下川町スキー場,44.2936541,142.6393179,2,12910,名寄,上川,名寄市大橋,雪,44.37,142.456667,89,16.826,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+下川町スキー場,44.2936541,142.6393179,3,17900,西興部,ｵﾎｰﾂｸ,紋別郡西興部村西興部,雪,44.331667,142.935,120,23.902,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+下川町スキー場,44.2936541,142.6393179,4,12900,美深,上川,中川郡美深町西町,雪,44.48,142.341667,77,31.445,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+下川町スキー場,44.2936541,142.6393179,5,12915,和寒,上川,上川郡和寒町日ノ出,雪,44.028333,142.41,150,34.713,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+上川町営中山スキー場,43.8518262,142.7798868,1,12920,上川,上川,上川郡上川町栄町,雪,43.846667,142.753333,324,2.205,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+上川町営中山スキー場,43.8518262,142.7798868,2,12930,層雲峡,上川,上川郡上川町層雲峡高山,雪,43.753333,142.93,540,16.281,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+上川町営中山スキー場,43.8518262,142.7798868,3,17955,白滝,ｵﾎｰﾂｸ,紋別郡遠軽町白滝北支湧別,雪,43.865,143.153333,475,29.978,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+上川町営中山スキー場,43.8518262,142.7798868,4,12932,東神楽,上川,上川郡東神楽町東2線　旭川航空気象観測所,官,43.67,142.446667,211,33.539,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
+上川町営中山スキー場,43.8518262,142.7798868,5,12927,旭川,上川,旭川市宮前1条　旭川地方気象台,官,43.756667,142.371667,120,34.426,unverified_candidate,not_checked,https://www.jma.go.jp/jma/kishou/know/amedas/snow_master.zip
