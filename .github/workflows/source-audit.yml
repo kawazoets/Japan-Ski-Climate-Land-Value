@@ -1,7 +1,5 @@
 name: Weekly source availability audit
 on:
-  schedule:
-    - cron: '13 2 * * 1'
   workflow_dispatch:
 permissions:
   contents: write
