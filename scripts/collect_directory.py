@@ -25,7 +25,7 @@ class Parser(HTMLParser):
         if tag=="li" and self.in_li:
             name=re.sub(r"\s+"," ",self.buf).strip()
             name=re.sub(r"詳しい情報$","",name).strip()
-            if name and ("スキー" in name or "スノー" in name or "リゾート" in name or "高原" in name or "ゲレンデ" in name or "白馬" in name or "安比" in name or "GALA" in name):
+            if name and name not in ("スキー場一覧", "全国スキー場一覧") and ("スキー" in name or "スノー" in name or "リゾート" in name or "高原" in name or "ゲレンデ" in name or "白馬" in name or "安比" in name or "GALA" in name):
                 self.items.append((self.region,self.prefecture,name))
             self.in_li-=1
 def main():
