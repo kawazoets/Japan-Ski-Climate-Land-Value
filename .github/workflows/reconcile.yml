@@ -1,10 +1,5 @@
 name: Generate candidate reconciliation report
 on:
-  push:
-    paths:
-      - 'data/directory_classified.csv'
-      - 'scripts/reconcile_candidates.py'
-      - '.github/workflows/reconcile.yml'
   workflow_dispatch:
 permissions:
   contents: write
