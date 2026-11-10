@@ -1,0 +1,53 @@
+{
+  "coverage": {
+    "hokkaido_west": {
+      "status": "failed",
+      "elements": 0,
+      "endpoint": null,
+      "error": "The read operation timed out; HTTP Error 502: Bad Gateway"
+    },
+    "hokkaido_east": {
+      "status": "ok",
+      "elements": 70,
+      "endpoint": "https://overpass-api.de/api/interpreter",
+      "error": null
+    },
+    "tohoku_north": {
+      "status": "failed",
+      "elements": 0,
+      "endpoint": null,
+      "error": "The read operation timed out; The read operation timed out"
+    },
+    "tohoku_south": {
+      "status": "failed",
+      "elements": 0,
+      "endpoint": null,
+      "error": "The read operation timed out; HTTP Error 502: Bad Gateway"
+    },
+    "kanto": {
+      "status": "failed",
+      "elements": 0,
+      "endpoint": null,
+      "error": "The read operation timed out; The read operation timed out"
+    },
+    "nagano_niigata": {
+      "status": "failed",
+      "elements": 0,
+      "endpoint": null,
+      "error": "The read operation timed out; The read operation timed out"
+    },
+    "hokuriku_chubu": {
+      "status": "failed",
+      "elements": 0,
+      "endpoint": null,
+      "error": "The read operation timed out; The read operation timed out"
+    },
+    "west_japan": {
+      "status": "failed",
+      "elements": 0,
+      "endpoint": null,
+      "error": "The read operation timed out; HTTP Error 502: Bad Gateway"
+    }
+  },
+  "candidate_count": 70
+}
