@@ -1,0 +1,14 @@
+resort_name,station_id,station_name,straight_line_distance_km,station_altitude_m,station_type,proximity_class,station_verification_status,historical_daily_data_status,notes
+伊ノ沢市民スキー場,12927,旭川,3.388,120,官,near_candidate,needs_elevation_and_history_check,not_acquired,Resort elevation and station record continuity not yet checked
+富良野スキー場,12940,富良野,4.904,174,雪,near_candidate,needs_elevation_and_history_check,not_acquired,Resort elevation and station record continuity not yet checked
+新得山スキー場,20930,新得,1.93,178,雪,near_candidate,needs_elevation_and_history_check,not_acquired,Resort elevation and station record continuity not yet checked
+マウントレースイスキー場,15925,夕張,2.064,293,雪,near_candidate,needs_elevation_and_history_check,not_acquired,Resort elevation and station record continuity not yet checked
+美幌町リリー山スキー場,17965,女満別,7.169,33,官,moderate_candidate,needs_elevation_and_history_check,not_acquired,Resort elevation and station record continuity not yet checked
+枝幸町三笠山スキー場,11917,北見枝幸,1.76,7,官,near_candidate,needs_elevation_and_history_check,not_acquired,Resort elevation and station record continuity not yet checked
+美深スキー場,12900,美深,1.805,77,雪,near_candidate,needs_elevation_and_history_check,not_acquired,Resort elevation and station record continuity not yet checked
+興部町営スキー場,17903,雄武,18.071,14,官,distant_candidate,needs_elevation_and_history_check,not_acquired,Distance >10km; do not use without local suitability validation
+北見市留辺蘂町八方台スキー場,17930,留辺蘂,13.263,325,雪,distant_candidate,needs_elevation_and_history_check,not_acquired,Distance >10km; do not use without local suitability validation
+かもい岳国際スキー場,15930,滝川,7.817,50,雪,moderate_candidate,needs_elevation_and_history_check,not_acquired,Resort elevation and station record continuity not yet checked
+上富良野町日の出スキー場,12935,美瑛,13.959,250,雪,distant_candidate,needs_elevation_and_history_check,not_acquired,Distance >10km; do not use without local suitability validation
+下川町スキー場,12925,下川,0.259,143,雪,near_candidate,needs_elevation_and_history_check,not_acquired,Resort elevation and station record continuity not yet checked
+上川町営中山スキー場,12920,上川,2.205,324,雪,near_candidate,needs_elevation_and_history_check,not_acquired,Resort elevation and station record continuity not yet checked
