@@ -427,8 +427,8 @@ DIR-0425,士別市あさひスキー場北海道・閉鎖,北海道,0,0,,,,no_ex
 DIR-0426,ひめかゆスキー場岩手県・営業休止,場岩手県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
 DIR-0427,みやぎ蔵王セントメリースキー場宮城県・閉鎖,場宮城県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
 DIR-0428,やくらいファミリースキー場宮城県・営業休止,場宮城県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
-DIR-0429,グランディ羽鳥湖スキーリゾート福島県・休業,ト福島県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
-DIR-0430,ファミリースノーパークばんだい×2福島県・休業,2福島県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
+DIR-0429,グランディ羽鳥湖スキーリゾート福島県・休業,福島県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
+DIR-0430,ファミリースノーパークばんだい×2福島県・休業,福島県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
 DIR-0431,国設野辺地まかど温泉スキー場青森県・休業,場青森県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
 DIR-0432,外ヶ浜町蟹田スキー場青森県・閉鎖,場青森県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
 DIR-0433,大曲ファミリースキー場秋田県・閉鎖,場秋田県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
@@ -442,7 +442,7 @@ DIR-0440,ホワイトバレースキー場群馬県・今季休業,場群馬県,
 DIR-0441,マウントジーンズスキーリゾート那須栃木県・閉鎖,須栃木県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
 DIR-0442,那須温泉ファミリースキー場栃木県・休業,場栃木県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
 DIR-0443,信州開田高原マイアスキー場長野県・今季休業,場長野県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
-DIR-0444,妙高スキーパーク新潟県・休業,ク新潟県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
+DIR-0444,妙高スキーパーク新潟県・休業,新潟県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
 DIR-0445,莇生田スキー場福井県・休業,場福井県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
 DIR-0446,アウトドアイン母袋スキー場岐阜県・休業,場岐阜県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
 DIR-0447,荘川高原スキー場岐阜県・閉鎖,場岐阜県,0,0,,,,no_exact_name_match,not_verified,retain_candidate
