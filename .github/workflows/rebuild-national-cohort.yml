@@ -1,0 +1,46 @@
+name: Rebuild nationwide research cohort and evidence matrix
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/directory_candidates.csv'
+      - 'scripts/build_national_resort_master.py'
+      - 'scripts/reconcile_national_osm.py'
+      - 'scripts/build_national_evidence_matrix.py'
+permissions:
+  contents: write
+concurrency:
+  group: national-rebuild
+  cancel-in-progress: false
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rebuild candidate cohort
+        run: python scripts/build_national_resort_master.py
+      - name: Reconcile coordinates
+        run: python scripts/reconcile_national_osm.py
+      - name: Build evidence matrix
+        run: python scripts/build_national_evidence_matrix.py
+      - name: Audit prefecture coverage
+        run: python scripts/audit_prefecture_geocoding.py
+      - name: Commit validated derived files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/national_ski_resort_candidate_master.csv data/national_resort_osm_reconciliation.csv data/national_climate_landvalue_evidence_matrix.csv data/prefecture_resort_geocoding_coverage.csv reports/national_resort_coverage_audit.md reports/national_resort_osm_reconciliation.md reports/national_climate_landvalue_evidence_status.md reports/prefecture_geocoding_coverage.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Rebuild corrected nationwide ski resort research cohort"
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then exit 0; fi
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
