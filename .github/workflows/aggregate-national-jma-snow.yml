@@ -1,0 +1,27 @@
+name: Aggregate nationwide JMA snow histories
+on:
+  push:
+    paths:
+      - 'scripts/aggregate_national_jma_snow_history.py'
+      - '.github/workflows/aggregate-national-jma-snow.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/aggregate_national_jma_snow_history.py
+      - name: Save nationwide metrics and resort linkage
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/jma_national_winter_snow_metrics_2016_2025.csv data/resort_to_observed_jma_station_coverage.csv reports/national_jma_14_station_winter_coverage.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Publish 14-station winter snow metrics and resort coverage"
+          git pull --rebase origin main
+          git push origin HEAD:main
