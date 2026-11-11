@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'scripts/audit_prefecture_geocoding.py'
+      - 'data/national_resort_osm_reconciliation.csv'
 permissions:
   contents: write
 jobs:
