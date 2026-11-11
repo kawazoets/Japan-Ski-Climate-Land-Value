@@ -1,0 +1,33 @@
+name: Consolidate all nationwide JMA snow observations
+on:
+  workflow_run:
+    workflows:
+      - Recover 15 JMA synoptic snow stations
+    types: [completed]
+  push:
+    paths:
+      - 'scripts/consolidate_national_jma_snow.py'
+      - '.github/workflows/consolidate-national-jma-snow.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  consolidate:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/consolidate_national_jma_snow.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/jma_national_combined_winter_metrics_2016_2025.csv data/resort_to_national_jma_observed_snow_coverage.csv reports/national_jma_combined_2016_2025_results.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Consolidate verified national JMA snow histories and ski resort links"
+          git pull --rebase origin main
+          git push origin HEAD:main
