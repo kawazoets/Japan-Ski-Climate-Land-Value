@@ -1,0 +1,51 @@
+name: Acquire historical MLIT land-price panel (one-shot)
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/acquire-historical-land-prices.yml'
+permissions:
+  contents: write
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install shapefile reader
+        run: python -m pip install pyshp
+      - name: Download official MLIT 2026 L01 archive
+        run: python scripts/acquire_historical_mlit_land_prices.py
+      - name: Extract 2016-2026 historical point prices
+        run: python scripts/extract_historical_mlit_land_prices.py
+      - name: Validate nonempty historic panel
+        run: |
+          python - <<'PY'
+          import csv
+          p='data/historical_mlit_land_price_points_2016_2026.csv'
+          with open(p,encoding='utf-8') as f: rows=list(csv.DictReader(f))
+          years={int(r['year']) for r in rows}
+          assert len(rows)>10000,(len(rows),'unexpectedly small')
+          assert years==set(range(2016,2027)),years
+          print('Validated',len(rows),'point-year observations')
+          PY
+      - name: Commit actual historical data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/historical_mlit_land_price_points_2016_2026.csv reports/historical_mlit_land_price_acquisition.md
+          git commit -m "Import validated 2016–2026 official historical land price point observations"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Upload acquisition evidence and data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-land-price-acquisition
+          path: |
+            reports/historical_mlit_land_price_acquisition.md
+            data/historical_mlit_land_price_points_2016_2026.csv
+          if-no-files-found: ignore
