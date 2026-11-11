@@ -1,0 +1,48 @@
+name: Recover 15 JMA synoptic snow stations
+on:
+  push:
+    paths:
+      - 'scripts/recover_jma_synoptic_stations.py'
+      - '.github/workflows/recover-jma-synoptic-stations.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        station_index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install beautifulsoup4
+      - run: python -u scripts/recover_jma_synoptic_stations.py ${{ matrix.station_index }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synoptic-jma-${{ matrix.station_index }}
+          path: data/jma_synoptic_station_history/
+  save:
+    needs: recover
+    if: always() && needs.recover.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: synoptic-jma-*
+          merge-multiple: true
+          path: data/jma_synoptic_station_history/
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/jma_synoptic_station_history/
+          git diff --cached --quiet && exit 0
+          git commit -m "Recover ten-winter snow observations from JMA synoptic stations"
+          git pull --rebase origin main
+          git push origin HEAD:main
