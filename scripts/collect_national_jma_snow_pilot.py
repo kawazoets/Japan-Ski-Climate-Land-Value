@@ -9,7 +9,8 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 ROOT=Path(__file__).resolve().parents[1]
 def fetch(prec,block,name,year,month):
- url=f"https://www.data.jma.go.jp/stats/etrn/view/daily_a1.php?prec_no={prec}&block_no={block}&year={year}&month={month}&day=&view=p2"
+ page="daily_s1.php" if len(str(block))==5 else "daily_a1.php"
+ url=f"https://www.data.jma.go.jp/stats/etrn/view/{page}?prec_no={prec}&block_no={block}&year={year}&month={month}&day=&view=p2"
  req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (academic noncommercial climate research)"})
  with urllib.request.urlopen(req,timeout=40) as response:html=response.read()
  soup=BeautifulSoup(html,"html.parser")
@@ -24,7 +25,10 @@ def fetch(prec,block,name,year,month):
   day=tds[0].get_text(" ",strip=True)
   if not day.isdigit() or not 1<=int(day)<=31:continue
   date=datetime.date(year,month,int(day))
-  val=tds[-1].get_text(" ",strip=True)
+  if page=="daily_s1.php":
+   if len(tds)<19:raise ValueError("Unexpected synoptic station row width "+str(len(tds)))
+   val=tds[18].get_text(" ",strip=True)
+  else:val=tds[-1].get_text(" ",strip=True)
   if val in ("","///","×","--","-"):depth=""
   else:
    m=re.fullmatch(r"(\d+(?:\.\d+)?)(?:\s*[)\]＃#])?",val)
