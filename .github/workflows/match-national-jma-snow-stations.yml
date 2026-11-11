@@ -1,0 +1,38 @@
+name: Match all resorts to official JMA snow stations
+on:
+  push:
+    paths:
+      - 'scripts/match_national_jma_snow_stations.py'
+      - '.github/workflows/match-national-jma-snow-stations.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  match:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Match official JMA stations to all geocoded resorts
+        run: python scripts/match_national_jma_snow_stations.py
+      - name: Commit observed station matches
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/national_jma_snow_station_candidates.csv reports/national_jma_snow_station_matching.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Match nationwide ski resort candidates to official JMA snow observation stations"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Preserve outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: national-jma-snow-station-matches
+          path: |
+            data/national_jma_snow_station_candidates.csv
+            reports/national_jma_snow_station_matching.md
+          if-no-files-found: ignore
