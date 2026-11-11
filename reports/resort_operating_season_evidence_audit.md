@@ -1,6 +1,6 @@
 # Ski resort operating-season evidence audit
 
-- Evidence rows: 0
+- Evidence rows: 1
 - Verified operating-day records: 0
 - Issues: 0
 
