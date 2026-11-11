@@ -1,0 +1,54 @@
+name: Autonomous ski operating-days research
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 2 * * *'
+  push:
+    paths:
+      - 'scripts/run_ski_operating_days_pipeline.py'
+      - '.github/workflows/autonomous-ski-operating-days.yml'
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: autonomous-ski-operating-days
+  cancel-in-progress: false
+jobs:
+  collect-audit-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pymupdf
+      - name: Gather official-source leads and audit verified operating days
+        run: python scripts/run_ski_operating_days_pipeline.py
+      - name: Publish results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ski_operating_day_source_leads.csv data/ski_operating_day_source_fetch.csv data/ski_actual_operating_days_joined.csv reports/ski_autonomous_pipeline_status.md reports/ski_autonomous_pipeline_status.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update autonomous ski operating-day evidence audit"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Request user action only when explicitly required
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,subprocess
+          d=json.load(open("reports/ski_autonomous_pipeline_status.json",encoding="utf-8"))
+          if not d.get("requires_user_action"):
+              print("No user action required")
+              raise SystemExit(0)
+          title="[Action required] Ski operating-day research"
+          found=subprocess.run(["gh","issue","list","--state","open","--search",title,"--json","number"],capture_output=True,text=True,check=True)
+          if not json.loads(found.stdout):
+              subprocess.run(["gh","issue","create","--title",title,"--body","See reports/ski_autonomous_pipeline_status.md for the exact blocker."],check=True)
+          PY
