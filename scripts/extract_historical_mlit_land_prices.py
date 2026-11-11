@@ -1,43 +1,40 @@
-"""Extract annual 2016–2026 prices from official MLIT L01-25 shapefile ZIP.
+"""Extract official 2026 MLIT L01 nationwide point history (2016–2026).
 
-Run after downloading L01-26_GML.zip from the official MLIT website.
-Zero means the site was not selected in that year, not a zero price.
+Verified against L01-26_GML.zip DBF: annual prices L01_095..L01_105;
+L01_001 municipality, L01_025 address, L01_028 land use.
 """
-import csv,zipfile,io,sys
+import csv,io,zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-FIELDS=["source_year","point_id","latitude","longitude","year","price_jpy_per_sqm","municipality_code","land_use_code","source_file"]
+FIELDS=["point_id_2026","municipality_code","address_2026","land_use_2026","latitude","longitude","year","price_jpy_per_sqm","source"]
 def main():
  source=ROOT/"data/raw/L01-26_GML.zip"
- if not source.exists():raise SystemExit("Official L01-26_GML.zip not downloaded; no data fabricated")
+ if not source.exists():raise SystemExit("Place official L01-26_GML.zip in data/raw/")
  try:import shapefile
- except ImportError:raise SystemExit("Install pyshp: pip install pyshp")
+ except ImportError:raise SystemExit("pip install pyshp")
+ out=[]
  with zipfile.ZipFile(source) as z:
-  names=z.namelist();shps=[n for n in names if n.lower().endswith(".shp")]
-  if not shps:raise SystemExit("No shapefile in official archive")
-  out=[]
-  for shp in shps:
-   base=shp[:-4];dbf=next((n for n in names if n.lower()==(base+".dbf").lower()),None)
-   if not dbf:continue
-   shx=next((n for n in names if n.lower()==(base+".shx").lower()),None)
-   reader=shapefile.Reader(shp=io.BytesIO(z.read(shp)),dbf=io.BytesIO(z.read(dbf)),encoding="cp932",**({"shx":io.BytesIO(z.read(shx))} if shx else {}))
-   fields=[f[0] for f in reader.fields[1:]]
-   if "L01_105" not in fields:raise SystemExit("Unexpected schema: missing 2026 annual price field")
-   for i,rec in enumerate(reader.iterShapeRecords()):
-    d=dict(zip(fields,rec.record))
-    shape=rec.shape
-    if not shape.points:continue
-    lon,lat=shape.points[0][:2]
-    if not 20<=lat<=47 or not 122<=lon<=154:raise SystemExit("Unexpected coordinate order")
-    for year in range(2016,2027):
-     field="L01_%03d"%(year-1921)
-     if field not in d:raise SystemExit("Missing annual price field "+field)
-     try:price=int(float(d[field] or 0))
-     except (ValueError,TypeError):raise SystemExit("Non-numeric price")
-     if price<=0:continue
-     out.append([2026,f"{base}:{i}",lat,lon,year,price,d.get("L01_001",""),d.get("L01_028",""),"L01-26_GML.zip"])
- target=ROOT/"data/historical_mlit_land_price_points_2016_2026.csv"
- with target.open("w",encoding="utf-8",newline="") as f:
+  prefix=next((x[:-4] for x in z.namelist() if x.lower().endswith(".shp")),None)
+  if prefix is None:raise SystemExit("No shapefile")
+  r=shapefile.Reader(shp=io.BytesIO(z.read(prefix+".shp")),dbf=io.BytesIO(z.read(prefix+".dbf")),encoding="cp932")
+  fields=[x[0] for x in r.fields[1:]]
+  required={"L01_001","L01_025","L01_028"}|{"L01_%03d"%i for i in range(95,106)}
+  if not required.issubset(fields):raise SystemExit("Unexpected MLIT schema: "+str(sorted(required-set(fields))))
+  for i,rec in enumerate(r.iterShapeRecords(),1):
+   d=dict(zip(fields,rec.record))
+   if len(rec.shape.points)!=1:raise SystemExit("Unexpected non-point geometry")
+   lon,lat=rec.shape.points[0]
+   if not (20<=lat<=47 and 122<=lon<=154):raise SystemExit("Invalid lat/lon")
+   for year in range(2016,2027):
+    value=d["L01_%03d"%(year-1921)]
+    if value in (None,"",0,"0"):continue
+    price=int(value)
+    if price<=0:continue
+    out.append([f"L01-26-{i:05d}",str(d["L01_001"]),str(d["L01_025"]),str(d["L01_028"]),f"{lat:.8f}",f"{lon:.8f}",year,price,"MLIT L01-26_GML.zip"])
+ target=ROOT/"data/MLIT_land_prices_2016_2026.csv"
+ target.parent.mkdir(parents=True,exist_ok=True)
+ with target.open("w",encoding="utf-8-sig",newline="") as f:
   w=csv.writer(f);w.writerow(FIELDS);w.writerows(out)
- print("Extracted",len(out),"official year-point observations into",target)
+ if len(out)<250000:raise SystemExit("Unexpectedly few records "+str(len(out)))
+ print("Official point-year observations:",len(out),"output:",target)
 if __name__=="__main__":main()
