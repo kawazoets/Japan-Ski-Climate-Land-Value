@@ -1,25 +1,23 @@
-# National ski resort geocoding coverage
+# Corrected prefecture geocoding coverage
 
-- Directory candidate records: **458**
-- Single unverified facility geometry candidates: **159**
-- Failed prefectures: **12**
-- Directory candidates in failed prefectures: **128**
+- National directory candidates: **458**
+- Unverified single geometry matches: **228**
+- Failed prefecture queries: **12**
+- Candidates in failed prefectures: **22**
 
-## Failed-prefecture priority (by directory count)
+## Failed prefectures
 
-- 埼玉県: 107 directory candidates; 0 single-geometry matches
-- 広島県: 8 directory candidates; 0 single-geometry matches
-- 富山県: 6 directory candidates; 0 single-geometry matches
-- 鳥取県: 4 directory candidates; 0 single-geometry matches
-- 静岡県: 2 directory candidates; 0 single-geometry matches
-- 大分県: 1 directory candidates; 0 single-geometry matches
-- 佐賀県: 0 directory candidates; 0 single-geometry matches
-- 千葉県: 0 directory candidates; 0 single-geometry matches
-- 徳島県: 0 directory candidates; 0 single-geometry matches
-- 沖縄県: 0 directory candidates; 0 single-geometry matches
-- 熊本県: 0 directory candidates; 0 single-geometry matches
-- 高知県: 0 directory candidates; 0 single-geometry matches
+- 広島県: 8 candidates
+- 富山県: 6 candidates
+- 鳥取県: 4 candidates
+- 静岡県: 2 candidates
+- 埼玉県: 1 candidates
+- 大分県: 1 candidates
+- 佐賀県: 0 candidates
+- 千葉県: 0 candidates
+- 徳島県: 0 candidates
+- 沖縄県: 0 candidates
+- 熊本県: 0 candidates
+- 高知県: 0 candidates
 
-## Methodological limits
-
-This is an evidence-coverage audit, not a resort closure or ski-season analysis. Exact-name OSM geometry matches are unverified, and missing matches must not be treated as missing resorts. Counts of facilities and counts of OSM piste geometries are different. Climate/land-price inference is not supported until resort operating-day records and appropriate geographic controls are joined.
+Prior coverage falsely attributed Nagano and Niigata resorts to Saitama, and closed resorts to Miyazaki. This report uses corrected prefecture assignments. Resort opening/closure and climate impacts remain unverified.
