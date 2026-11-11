@@ -1,0 +1,55 @@
+name: Daily nationwide ski research quality gate
+on:
+  schedule:
+    - cron: '23 1 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/daily-research-quality-gate.yml'
+      - 'scripts/daily_research_quality_gate.py'
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: daily-national-ski-quality-gate
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate resort operating seasons
+        run: python scripts/audit_operating_seasons.py
+      - name: Validate full national evidence coverage
+        run: python scripts/daily_research_quality_gate.py
+      - name: Commit quality report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/automated_research_quality_gate.md reports/operating_season_evidence_audit.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Update daily national ski research quality checks"
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then exit 0; fi
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+      - name: Create or update issue only on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title='[Action required] National ski research quality gate failed';
+            const {owner,repo}=context.repo;
+            const body='Daily research validation failed. Review the failed run: '+context.serverUrl+'/'+owner+'/'+repo+'/actions/runs/'+context.runId+'\n\nOnly intervene if the automated workflow cannot recover.';
+            const issues=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',per_page:100});
+            const issue=issues.find(x=>x.title===title&&!x.pull_request);
+            if(issue) await github.rest.issues.createComment({owner,repo,issue_number:issue.number,body});
+            else await github.rest.issues.create({owner,repo,title,body});
