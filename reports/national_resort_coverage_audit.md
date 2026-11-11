@@ -1,11 +1,11 @@
 # Nationwide candidate coverage audit
 
-- Directory candidate records retained: **458**
+- Directory candidate records retained: **451**
 - Records in duplicate normalized-name groups: **0**
 - Unique-name candidates with an exact-name OSM coordinate candidate: **0**
 - OSM raw candidate records available: **0**
 - Prior pilot resort names found in nationwide directory: **13**
-- Remaining candidate records without unambiguous exact-name coordinates: **458**
+- Remaining candidate records without unambiguous exact-name coordinates: **451**
 
 **No candidates were discarded for missing coordinates, land-price points, station matches, or unknown closure status.**
 

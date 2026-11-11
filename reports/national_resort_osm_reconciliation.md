@@ -1,13 +1,14 @@
-# Nationwide resort–OSM reconciliation (corrected prefectures)
+# Nationwide resort–OSM reconciliation
 
-- Directory candidates retained: **451**
+- Directory candidate records retained: **451**
 - OSM named geometries: **2712**
 - Prefectures successfully harvested: **35/47**
-- Single unverified facility geometry: **228**
-- Multiple facility geometries requiring review: **16**
-- Piste-only matches: **2**
-- No exact-name match: **205**
 
-**Corrected geographic attribution:** 長野県 62 candidates; 新潟県 44; 埼玉県 1; 宮崎県 1. Previously, a stale HTML prefecture heading caused false assignments. Closed/paused resort entries retain their prefecture but are not classified as currently operating.
+## Exact-name match classification
 
-Coordinates are unverified OSM geometry candidates, not verified resort entrances. Missing exact matches do not imply closure. No historical operating-day evidence has been collected.
+- multiple_facility_geometries_manual_review: **16**
+- no_exact_name_match: **205**
+- one_unverified_facility_geometry: **228**
+- piste_only_or_nonfacility_match: **2**
+
+Coordinates are unverified OSM candidates, not verified resort entrances. Individual piste features are excluded from accepted coordinates. All directory candidates are retained. Missing matches can reflect missing OSM coverage, failed prefecture queries, name variations or genuinely absent features; they are not evidence of resort closure. No resort operating-day data has been established.
