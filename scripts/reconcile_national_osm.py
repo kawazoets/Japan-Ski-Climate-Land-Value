@@ -24,7 +24,7 @@ def directory_prefecture(d):
     if region.startswith("北海道"):return "北海道"
     # Regional heading is authoritative for dedicated prefecture sections.
     for label,p in (("長野","長野県"),("新潟","新潟県")):
-        if re.match(r"^"+label+r"\\d",region):return p
+        if re.match(r"^"+label+r"\d",region):return p
     return prefecture(heading) or prefecture(region)
 
 def main():
@@ -50,7 +50,9 @@ def main():
             status="no_exact_name_match";best={}
         row={"candidate_id":d["candidate_id"],"resort_name":d["resort_name"],"prefecture":pref,"matching_osm_geometries":len(candidates),"matching_facility_geometries":len(facility),"latitude_candidate":best.get("latitude",""),"longitude_candidate":best.get("longitude",""),"osm_source_url":best.get("source_url",""),"match_status":status,"operating_status":"not_verified","research_inclusion":"retain_candidate"}
         rows.append(row);counts[status]+=1
-    if sum(not x["prefecture"] for x in rows):\n        raise SystemExit("Some candidate prefectures remain unresolved; refusing to publish misleading coverage")\n    out=ROOT/"data/national_resort_osm_reconciliation.csv"
+    if sum(not x["prefecture"] for x in rows):
+        raise SystemExit("Some candidate prefectures remain unresolved; refusing to publish misleading coverage")
+    out=ROOT/"data/national_resort_osm_reconciliation.csv"
     with out.open("w",encoding="utf-8",newline="") as f:
         w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
     audit=(ROOT/"reports/osm_national_geocoding_harvest.md").read_text(encoding="utf-8")
