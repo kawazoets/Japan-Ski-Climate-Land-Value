@@ -20,7 +20,7 @@ def main():
    base=shp[:-4];dbf=next((n for n in names if n.lower()==(base+".dbf").lower()),None)
    if not dbf:continue
    shx=next((n for n in names if n.lower()==(base+".shx").lower()),None)
-   reader=shapefile.Reader(shp=io.BytesIO(z.read(shp)),dbf=io.BytesIO(z.read(dbf)),**({"shx":io.BytesIO(z.read(shx))} if shx else {}))
+   reader=shapefile.Reader(shp=io.BytesIO(z.read(shp)),dbf=io.BytesIO(z.read(dbf)),encoding="cp932",**({"shx":io.BytesIO(z.read(shx))} if shx else {}))
    fields=[f[0] for f in reader.fields[1:]]
    if "L01_105" not in fields:raise SystemExit("Unexpected schema: missing 2026 annual price field")
    for i,rec in enumerate(reader.iterShapeRecords()):
