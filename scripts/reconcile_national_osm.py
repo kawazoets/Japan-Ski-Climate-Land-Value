@@ -17,9 +17,9 @@ def directory_prefecture(d):
     # The source switches between prefecture headings and single-prefecture
     # regional headings (e.g. 長野64 か所), and then a separate closure list.
     if "営業休止・閉鎖" in region:
-        m=re.search(r"(北海道|東京都|京都府|大阪府|.{2,3}県)[・･](?:閉鎖|休業|営業休止|今季休業)",name)
+        m=re.search(r"(北海道|東京都|京都府|大阪府|[一-龥]{2,3}県)[・･](?:閉鎖|休業|営業休止|今季休業)$",name)
         if not m:
-            m=re.search(r"(北海道|東京都|京都府|大阪府|.{2,3}県)(?:閉鎖|休業|営業休止|今季休業)",name)
+            m=re.search(r"(北海道|東京都|京都府|大阪府|[一-龥]{2,3}県)(?:閉鎖|休業|営業休止|今季休業)$",name)
         return m.group(1) if m else ""
     if region.startswith("北海道"):return "北海道"
     # Regional heading is authoritative for dedicated prefecture sections.
