@@ -1,0 +1,36 @@
+name: Collect official JMA Furano snow observations
+on:
+  push:
+    paths:
+      - 'scripts/collect_jma_furano_pilot.py'
+      - '.github/workflows/collect-jma-furano-pilot.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install beautifulsoup4
+      - name: Download real daily snow observations
+        run: python scripts/collect_jma_furano_pilot.py
+      - name: Commit verified observed records
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/jma_furano_daily_snow_pilot_2025.csv
+          git diff --cached --quiet && exit 0
+          git commit -m "Collect actual JMA Furano daily snow observations"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jma-furano-daily-snow-pilot
+          path: data/jma_furano_daily_snow_pilot_2025.csv
+          if-no-files-found: ignore
