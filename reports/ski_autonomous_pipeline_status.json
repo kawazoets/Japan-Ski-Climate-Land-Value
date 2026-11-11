@@ -1,0 +1,31 @@
+{
+  "date_utc": "2026-11-11",
+  "status": "BLOCKED_INSUFFICIENT_OPERATING_DAY_EVIDENCE",
+  "matched_actual_operating_day_rows": 0,
+  "resorts_with_two_or_more_seasons": 0,
+  "unverified_official_pdf_leads": 44,
+  "unmatched_verified_resorts": [
+    "芽室町営スキー場"
+  ],
+  "source_fetches": [
+    {
+      "source_id": "memuro",
+      "url": "https://www.memuro.net/administration/soshiki/keiei/kanrisya/files/R2jhkokuminn.pdf",
+      "status": "parsed",
+      "error": ""
+    },
+    {
+      "source_id": "nagano_policy",
+      "url": "https://www.pref.nagano.lg.jp/kankoshin/documents/20_sukizyouhoushin_hontai.pdf",
+      "status": "parsed",
+      "error": ""
+    },
+    {
+      "source_id": "nagano_survey",
+      "url": "https://www.pref.nagano.lg.jp/kankoshin/documents/30_zittaityousakekka.pdf",
+      "status": "parsed",
+      "error": ""
+    }
+  ],
+  "requires_user_action": false
+}
