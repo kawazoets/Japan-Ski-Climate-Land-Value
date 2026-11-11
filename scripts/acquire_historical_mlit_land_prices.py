@@ -25,7 +25,7 @@ def main():
  out=ROOT/"reports/historical_mlit_land_price_acquisition.md"
  if not urls:
   out.write_text("# Historical MLIT land-price acquisition\n\nOfficial listing: "+PAGE+"\n\nThe 2026 L01 nationwide ZIP is listed but no direct download URL was exposed in static anchor attributes. Do not invent URLs. Obtain the official link via the site's supported download interface.\n",encoding="utf-8")
-  print("No official direct download link exposed; see report");return
+  raise SystemExit("No official direct download link exposed; see report")
  if args.discover_only:
   out.write_text("# Historical MLIT land-price acquisition\n\nOfficial listing: "+PAGE+"\n\nDiscovered ZIP links:\n"+"\n".join("- "+x for x in urls)+"\n",encoding="utf-8")
   print("Discovered",len(urls),"candidate links");return
