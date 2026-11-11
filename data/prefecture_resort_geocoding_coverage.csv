@@ -11,14 +11,14 @@ prefecture,harvest_status,directory_candidates,single_geometry_candidates,ambigu
 大阪府,ok,0,0,0,0,0,,monitor
 奈良県,ok,1,1,0,0,0,1.000,monitor
 宮城県,ok,8,5,1,0,2,0.625,review_names_and_facility_geometries
-宮崎県,ok,8,1,0,0,7,0.125,review_names_and_facility_geometries
+宮崎県,ok,1,1,0,0,0,1.000,monitor
 富山県,failed,6,0,0,0,6,0.000,retry_osm
 山口県,ok,1,1,0,0,0,1.000,monitor
 山形県,ok,27,18,5,0,4,0.667,review_names_and_facility_geometries
 山梨県,ok,2,1,1,0,0,0.500,review_names_and_facility_geometries
 岐阜県,ok,13,8,0,0,5,0.615,review_names_and_facility_geometries
 岡山県,ok,4,2,1,0,1,0.500,review_names_and_facility_geometries
-岩手県,ok,16,9,0,1,6,0.563,review_names_and_facility_geometries
+岩手県,ok,16,9,0,1,6,0.562,review_names_and_facility_geometries
 島根県,ok,2,2,0,0,0,1.000,monitor
 広島県,failed,8,0,0,0,8,0.000,retry_osm
 徳島県,failed,0,0,0,0,0,,monitor
