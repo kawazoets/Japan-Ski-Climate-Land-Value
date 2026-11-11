@@ -35,7 +35,7 @@ def main():
      try:price=int(float(d[field] or 0))
      except (ValueError,TypeError):raise SystemExit("Non-numeric price")
      if price<=0:continue
-     out.append([2026,f"{base}:{i}",lat,lon,year,price,d.get("L01_001",""),d.get("L01_002",""),"L01-26_GML.zip"])
+     out.append([2026,f"{base}:{i}",lat,lon,year,price,d.get("L01_001",""),d.get("L01_028",""),"L01-26_GML.zip"])
  target=ROOT/"data/historical_mlit_land_price_points_2016_2026.csv"
  with target.open("w",encoding="utf-8",newline="") as f:
   w=csv.writer(f);w.writerow(FIELDS);w.writerows(out)
