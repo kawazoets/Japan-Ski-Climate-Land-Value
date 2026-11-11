@@ -29,7 +29,7 @@ def fetch(prec,block,name,year,month):
    if len(tds)<19:raise ValueError("Unexpected synoptic station row width "+str(len(tds)))
    val=tds[18].get_text(" ",strip=True)
   else:val=tds[-1].get_text(" ",strip=True)
-  if val in ("","///","×","--","-"):depth=""
+  if re.fullmatch(r"(?:--?|///|×|\s*)(?:\s*[\]）)＃#])?",val):depth=""
   else:
    m=re.fullmatch(r"(\d+(?:\.\d+)?)(?:\s*[)\]＃#])?",val)
    if not m:raise ValueError("Unrecognized snow cell "+repr(val)+" "+url)
