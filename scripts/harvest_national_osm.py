@@ -14,8 +14,9 @@ ENDPOINTS=("https://overpass.kumi.systems/api/interpreter","https://overpass-api
 def main():
     with MASTER.open(encoding="utf-8-sig",newline="") as f:master=list(csv.DictReader(f))
     # JIS prefecture names from directory region heading; strip trailing counts.
-    prefectures=sorted({re.sub(r"\\d.*$", "", r["region_raw"].strip()) for r in master if r.get("region_raw")})
-    if len(prefectures)<20:raise SystemExit(f"Insufficient prefecture coverage: {len(prefectures)}")\n    print(f"Validated prefecture names ({len(prefectures)}): {prefectures}",flush=True)
+    prefectures=sorted({re.sub(r"\d.*$", "", r["region_raw"].strip()) for r in master if r.get("region_raw")})
+    if len(prefectures)<20:raise SystemExit(f"Insufficient prefecture coverage: {len(prefectures)}")
+    print(f"Validated prefecture names ({len(prefectures)}): {prefectures}",flush=True)
     records={};failures=[]
     for i,pref in enumerate(prefectures,1):
         query=f'''[out:json][timeout:90];area["name"="{pref}"]["admin_level"="4"]->.pref;(nwr["landuse"="winter_sports"](area.pref);nwr["piste:type"="downhill"]["name"](area.pref);nwr["sport"="skiing"]["name"](area.pref););out center tags;'''
