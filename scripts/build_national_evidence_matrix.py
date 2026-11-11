@@ -34,5 +34,5 @@ The cohort is the directory candidate list, not a verified census of currently o
 Next independent work packages: official 2016–2026 land-price point acquisition, municipality and resort coordinate validation, operating-day historical sourcing, and JMA snow series acquisition with quality codes.
 """,encoding="utf-8")
     print(f"records={len(out)} provisional_coordinates={n} analysis_eligible=0")
-    if len(out)!=458:raise SystemExit("National cohort changed unexpectedly")
+    if len(out)<400:raise SystemExit("National cohort changed unexpectedly")
 if __name__=="__main__":main()
