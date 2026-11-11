@@ -1,0 +1,28 @@
+name: Audit source-backed ski resort operating seasons
+on:
+  push:
+    paths:
+      - 'data/resort_operating_season_evidence.csv'
+      - 'scripts/audit_resort_operating_seasons.py'
+      - '.github/workflows/audit-resort-operating-seasons.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/audit_resort_operating_seasons.py
+      - name: Save audit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/resort_operating_season_evidence_audit.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Audit source-backed operating-day records and report gaps"
+          git pull --rebase origin main
+          git push origin HEAD:main
