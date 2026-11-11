@@ -1,0 +1,26 @@
+name: Audit 50-station JMA historical observations
+on:
+  push:
+    paths:
+      - 'scripts/audit_national_jma_50_stations.py'
+      - '.github/workflows/audit-national-jma-50-stations.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/audit_national_jma_50_stations.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/national_jma_50_station_download_audit.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Audit national JMA snow history and resort coverage"
+          git pull --rebase origin main
+          git push origin HEAD:main
