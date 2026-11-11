@@ -1,0 +1,26 @@
+name: Audit national snow-land association robustness
+on:
+  push:
+    paths:
+      - 'scripts/audit_national_ski_snow_land_robustness.py'
+      - '.github/workflows/audit-national-ski-snow-land-robustness.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  robustness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/audit_national_ski_snow_land_robustness.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/national_ski_snow_land_robustness.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Publish robustness tests of nationwide snow and land price associations"
+          git pull --rebase origin main
+          git push origin HEAD:main
