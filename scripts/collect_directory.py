@@ -38,6 +38,14 @@ def main():
         if key in seen:continue
         seen.add(key)
         rows.append((region,pref,name,URL,datetime.now(timezone.utc).isoformat(),"unverified_directory_candidate"))
+    # Discard the site's editorial/navigation links that appear after
+    # the dedicated closed/paused-resorts section.
+    rows=[r for r in rows if not any(term in r[2] for term in (
+        "エリア別スキー場ガイド：","東京から行けるオープンの早い",
+        "オフトレ：屋内ゲレンデ","スキーのあとに寄りたい温泉街",
+        "全国のスキー場 オープン日一覧","子連れスキーのスキー場選び",
+        "スキー・スノボデビュー＋石和温泉"
+    ))]
     if len(rows)<300:raise RuntimeError(f"Only {len(rows)} candidates parsed; refusing to overwrite data")
     out=Path(__file__).resolve().parents[1]/"data"/"directory_candidates.csv"
     with out.open("w",encoding="utf-8",newline="") as f:
