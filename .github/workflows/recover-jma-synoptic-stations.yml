@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'scripts/recover_jma_synoptic_stations.py'
+      - 'scripts/collect_national_jma_snow_pilot.py'
       - '.github/workflows/recover-jma-synoptic-stations.yml'
   workflow_dispatch:
 permissions:
