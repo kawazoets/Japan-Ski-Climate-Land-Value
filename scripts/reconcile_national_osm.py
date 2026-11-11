@@ -10,6 +10,23 @@ def norm(s):
 def prefecture(s):
     m=re.match(r"^(北海道|東京都|京都府|大阪府|.{2,3}県)",s or "")
     return m.group(1) if m else ""
+def directory_prefecture(d):
+    region=d.get("region_raw","")
+    heading=d.get("prefecture_heading_raw","")
+    name=d.get("resort_name","")
+    # The source switches between prefecture headings and single-prefecture
+    # regional headings (e.g. 長野64 か所), and then a separate closure list.
+    if "営業休止・閉鎖" in region:
+        m=re.search(r"(北海道|東京都|京都府|大阪府|.{2,3}県)[・･](?:閉鎖|休業|営業休止|今季休業)",name)
+        if not m:
+            m=re.search(r"(北海道|東京都|京都府|大阪府|.{2,3}県)(?:閉鎖|休業|営業休止|今季休業)",name)
+        return m.group(1) if m else ""
+    if region.startswith("北海道"):return "北海道"
+    # Regional heading is authoritative for dedicated prefecture sections.
+    for label,p in (("長野","長野県"),("新潟","新潟県")):
+        if re.match(r"^"+label+r"\\d",region):return p
+    return prefecture(heading) or prefecture(region)
+
 def main():
     directory=read(ROOT/"data/national_ski_resort_candidate_master.csv")
     osm=read(ROOT/"data/osm_national_ski_area_geometries.csv")
@@ -19,7 +36,7 @@ def main():
             idx[(prefecture(r.get("prefecture_query","")),norm(r["name"]))].append(r)
     rows=[];counts=collections.Counter()
     for d in directory:
-        pref=prefecture(d.get("region_raw","")) or prefecture(d.get("prefecture_heading_raw",""))
+        pref=directory_prefecture(d)
         candidates=idx.get((pref,norm(d["resort_name"])),[])
         # Piste-only matches are never accepted as facility coordinates.
         facility=[r for r in candidates if r.get("landuse")=="winter_sports" or r.get("sport")=="skiing" and not r.get("piste_type")]
@@ -33,7 +50,7 @@ def main():
             status="no_exact_name_match";best={}
         row={"candidate_id":d["candidate_id"],"resort_name":d["resort_name"],"prefecture":pref,"matching_osm_geometries":len(candidates),"matching_facility_geometries":len(facility),"latitude_candidate":best.get("latitude",""),"longitude_candidate":best.get("longitude",""),"osm_source_url":best.get("source_url",""),"match_status":status,"operating_status":"not_verified","research_inclusion":"retain_candidate"}
         rows.append(row);counts[status]+=1
-    out=ROOT/"data/national_resort_osm_reconciliation.csv"
+    if sum(not x["prefecture"] for x in rows):\n        raise SystemExit("Some candidate prefectures remain unresolved; refusing to publish misleading coverage")\n    out=ROOT/"data/national_resort_osm_reconciliation.csv"
     with out.open("w",encoding="utf-8",newline="") as f:
         w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
     audit=(ROOT/"reports/osm_national_geocoding_harvest.md").read_text(encoding="utf-8")
