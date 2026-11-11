@@ -1,6 +1,6 @@
 # Automated national research quality gate
 
-Last successful check: **2026-11-11 09:26 UTC**
+Last successful check: **2026-11-11 09:35 UTC**
 
 - Directory facility candidates: **451** (not official operating-resort census)
 - Provisional single-geometry OSM matches: **228**
