@@ -1,7 +1,5 @@
 name: Collect directory candidates
 on:
-  schedule:
-    - cron: '11 2 * * 1'
   workflow_dispatch:
 permissions:
   contents: write
