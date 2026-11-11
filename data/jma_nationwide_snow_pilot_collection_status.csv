@@ -1,0 +1,16 @@
+station_id,station_name,status,daily_rows,error
+12925,下川,collected,181,
+12915,和寒,collected,181,
+54935,小出,collected,181,
+12905,音威子府,collected,181,
+20910,ぬかびら源泉郷,collected,181,
+17915,佐呂間,collected,181,
+35945,左沢,collected,181,
+11917,北見枝幸,failed,0,Station/snow column mismatch https://www.data.jma.go.jp/stats/etrn/view/daily_a1.php?prec_no=11&block_no=47402&year=2024&month=11&day=&view=p2
+57900,九頭竜,collected,181,
+35920,肘折,collected,181,
+12900,美深,collected,181,
+12945,幾寅,collected,181,
+20930,新得,collected,181,
+15905,幌加内,collected,181,
+15925,夕張,collected,181,
