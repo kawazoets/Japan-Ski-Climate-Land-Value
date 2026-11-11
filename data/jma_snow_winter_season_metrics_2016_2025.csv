@@ -1,0 +1,11 @@
+station_id,winter_start_year,expected_days,rows_present,valid_depth_days,coverage,observed_snow_cover_days_1cm,observed_snow_cover_days_30cm,max_daily_snow_depth_cm,mean_observed_depth_cm,quality_status
+12940,2016,181,181,181,1.0,154,110,88.0,37.67,usable
+12940,2017,181,181,181,1.0,139,114,108.0,42.06,usable
+12940,2018,181,181,181,1.0,134,91,74.0,28.65,usable
+12940,2019,182,182,182,1.0,135,65,67.0,22.98,usable
+12940,2020,181,181,181,1.0,132,96,119.0,33.42,usable
+12940,2021,181,181,181,1.0,119,87,101.0,32.45,usable
+12940,2022,181,181,181,1.0,113,86,77.0,27.42,usable
+12940,2023,182,182,182,1.0,137,101,75.0,30.25,usable
+12940,2024,181,181,181,1.0,123,79,63.0,22.39,usable
+12940,2025,181,181,181,1.0,118,68,67.0,22.36,usable
