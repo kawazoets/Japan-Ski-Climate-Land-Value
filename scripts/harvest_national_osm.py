@@ -4,7 +4,7 @@ One request per prefecture, limited to winter-sports landuse or named ski
 downhill pistes. Save partial results even if an endpoint fails; fail clearly
 when no useful data is returned. No recurring schedule.
 """
-import csv,json,time,urllib.parse,urllib.request,collections
+import csv,json,time,urllib.parse,urllib.request,collections,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MASTER=ROOT/"data/national_ski_resort_candidate_master.csv"
@@ -14,8 +14,8 @@ ENDPOINTS=("https://overpass.kumi.systems/api/interpreter","https://overpass-api
 def main():
     with MASTER.open(encoding="utf-8-sig",newline="") as f:master=list(csv.DictReader(f))
     # JIS prefecture names from directory region heading; strip trailing counts.
-    prefectures=sorted({r["region_raw"].split(" ")[0].strip() for r in master if r.get("region_raw")})
-    if len(prefectures)<20:raise SystemExit(f"Insufficient prefecture coverage: {len(prefectures)}")
+    prefectures=sorted({re.sub(r"\\d.*$", "", r["region_raw"].strip()) for r in master if r.get("region_raw")})
+    if len(prefectures)<20:raise SystemExit(f"Insufficient prefecture coverage: {len(prefectures)}")\n    print(f"Validated prefecture names ({len(prefectures)}): {prefectures}",flush=True)
     records={};failures=[]
     for i,pref in enumerate(prefectures,1):
         query=f'''[out:json][timeout:90];area["name"="{pref}"]["admin_level"="4"]->.pref;(nwr["landuse"="winter_sports"](area.pref);nwr["piste:type"="downhill"]["name"](area.pref);nwr["sport"="skiing"]["name"](area.pref););out center tags;'''
