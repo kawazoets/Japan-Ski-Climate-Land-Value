@@ -1,0 +1,113 @@
+# Combined nationwide JMA snow-depth observation results
+
+- Unique stations with downloaded records: 100
+- Stations with all 10 winters usable: 80
+- Usable station-winters: 833 / 1000
+- Resort candidates linked to at least one station with usable winters: 212
+- Linked resorts within 10 km: 60
+- Linked resorts within 20 km: 158
+
+## Incomplete station-winters
+
+- 11917 北見枝幸 2016: records=181, valid=150
+- 11917 北見枝幸 2017: records=181, valid=152
+- 11917 北見枝幸 2018: records=181, valid=141
+- 11917 北見枝幸 2019: records=182, valid=138
+- 11917 北見枝幸 2020: records=181, valid=130
+- 11917 北見枝幸 2021: records=181, valid=127
+- 11917 北見枝幸 2022: records=181, valid=120
+- 11917 北見枝幸 2023: records=182, valid=130
+- 11917 北見枝幸 2024: records=181, valid=135
+- 11917 北見枝幸 2025: records=181, valid=128
+- 12927 旭川 2016: records=181, valid=159
+- 12927 旭川 2017: records=181, valid=147
+- 12927 旭川 2018: records=181, valid=143
+- 12927 旭川 2019: records=182, valid=138
+- 12927 旭川 2020: records=181, valid=132
+- 12927 旭川 2021: records=181, valid=126
+- 12927 旭川 2022: records=181, valid=120
+- 12927 旭川 2023: records=182, valid=139
+- 12927 旭川 2024: records=181, valid=134
+- 12927 旭川 2025: records=181, valid=136
+- 14913 札幌 2016: records=181, valid=140
+- 14913 札幌 2017: records=181, valid=132
+- 14913 札幌 2018: records=181, valid=123
+- 14913 札幌 2019: records=182, valid=130
+- 14913 札幌 2020: records=181, valid=112
+- 14913 札幌 2021: records=181, valid=118
+- 14913 札幌 2022: records=0, valid=0
+- 14913 札幌 2023: records=182, valid=129
+- 14913 札幌 2024: records=181, valid=135
+- 14913 札幌 2025: records=181, valid=125
+- 15923 岩見沢 2016: records=181, valid=142
+- 15923 岩見沢 2017: records=181, valid=138
+- 15923 岩見沢 2018: records=181, valid=138
+- 15923 岩見沢 2019: records=182, valid=124
+- 15923 岩見沢 2020: records=181, valid=146
+- 15923 岩見沢 2021: records=181, valid=125
+- 15923 岩見沢 2022: records=0, valid=0
+- 15923 岩見沢 2023: records=182, valid=132
+- 15923 岩見沢 2024: records=181, valid=131
+- 15923 岩見沢 2025: records=181, valid=104
+- 15935 石狩沼田 2016: records=181, valid=0
+- 15935 石狩沼田 2017: records=181, valid=0
+- 15935 石狩沼田 2018: records=181, valid=0
+- 15935 石狩沼田 2019: records=182, valid=0
+- 15935 石狩沼田 2020: records=181, valid=0
+- 15935 石狩沼田 2021: records=181, valid=0
+- 15940 秩父別 2016: records=181, valid=0
+- 15940 秩父別 2017: records=181, valid=0
+- 15940 秩父別 2018: records=181, valid=0
+- 15940 秩父別 2019: records=182, valid=0
+- 15940 秩父別 2020: records=181, valid=0
+- 15940 秩父別 2021: records=181, valid=0
+- 16903 小樽 2016: records=181, valid=139
+- 16903 小樽 2017: records=181, valid=141
+- 16903 小樽 2018: records=181, valid=120
+- 16903 小樽 2019: records=182, valid=127
+- 16903 小樽 2020: records=181, valid=117
+- 16903 小樽 2021: records=181, valid=127
+- 16903 小樽 2022: records=0, valid=0
+- 16903 小樽 2023: records=182, valid=132
+- 16903 小樽 2024: records=181, valid=133
+- 16903 小樽 2025: records=181, valid=126
+- 16917 倶知安 2016: records=181, valid=159
+- 16917 倶知安 2017: records=181, valid=156
+- 16917 倶知安 2018: records=181, valid=146
+- 16917 倶知安 2019: records=182, valid=137
+- 16917 倶知安 2020: records=181, valid=144
+- 16917 倶知安 2021: records=181, valid=146
+- 16917 倶知安 2022: records=181, valid=133
+- 16917 倶知安 2023: records=182, valid=147
+- 16917 倶知安 2024: records=181, valid=145
+- 16917 倶知安 2025: records=181, valid=135
+- 17903 雄武 2016: records=181, valid=151
+- 17903 雄武 2017: records=181, valid=137
+- 17903 雄武 2018: records=181, valid=134
+- 17903 雄武 2019: records=182, valid=128
+- 17903 雄武 2020: records=0, valid=0
+- 17903 雄武 2021: records=181, valid=119
+- 17903 雄武 2022: records=181, valid=112
+- 17903 雄武 2023: records=182, valid=129
+- 17903 雄武 2024: records=181, valid=129
+- 17903 雄武 2025: records=181, valid=123
+- 17904 紋別 2016: records=181, valid=142
+- 17904 紋別 2017: records=181, valid=129
+- 17904 紋別 2018: records=181, valid=123
+- 17904 紋別 2019: records=182, valid=117
+- 17904 紋別 2020: records=0, valid=0
+- 17904 紋別 2021: records=181, valid=115
+- 17904 紋別 2022: records=181, valid=105
+- 17904 紋別 2023: records=182, valid=119
+- 17904 紋別 2024: records=181, valid=133
+- 17904 紋別 2025: records=181, valid=120
+- 17917 網走 2016: records=181, valid=142
+- 17917 網走 2017: records=181, valid=131
+- 17917 網走 2018: records=181, valid=137
+- 17917 網走 2019: records=182, valid=111
+- 17917 網走 2020: records=0, valid=0
+- 17917 網走 2021: records=181, valid=108
+- 17917 網走 2022: records=181, valid=103
+- 17917 網走 2023: records=182, valid=112
+
+These are station snow observations, not actual ski resort operating days. Resort coordinates are provisional.
