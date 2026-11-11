@@ -30,7 +30,7 @@ def main():
   out.write_text("# Historical MLIT land-price acquisition\n\nOfficial listing: "+PAGE+"\n\nDiscovered ZIP links:\n"+"\n".join("- "+x for x in urls)+"\n",encoding="utf-8")
   print("Discovered",len(urls),"candidate links");return
  url=urls[0]
- if urllib.parse.urlparse(url).hostname not in ("nlftp.mlit.go.jp","www.nlftp.mlit.go.jp"):raise SystemExit("Unexpected ZIP host")
+ if urllib.parse.urlparse(url).hostname not in ("nlftp.mlit.go.jp","www.nlftp.mlit.go.jp","ksj-api.mlit.go.jp"):raise SystemExit("Unexpected ZIP host")
  req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0"})
  with urllib.request.urlopen(req,timeout=120) as f:data=f.read(60_000_001)
  if len(data)>60_000_000:raise SystemExit("Unexpected ZIP size")
