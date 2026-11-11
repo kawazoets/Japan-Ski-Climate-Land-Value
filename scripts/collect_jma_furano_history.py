@@ -43,8 +43,14 @@ def main():
  # Collect ten complete winter seasons, November to April, 2016–2025.
  for winter in range(2016,2026):
   for year,month in [(winter,11),(winter,12)]+[(winter+1,m) for m in (1,2,3,4)]:
-   out.extend(month_data(year,month))
-   time.sleep(2)
+   try:
+    month_rows=month_data(year,month)
+    out.extend(month_rows)
+    print(f"OK {year}-{month:02d}: {len(month_rows)} daily records",flush=True)
+   except Exception as e:
+    print(f"FAILED {year}-{month:02d}: {type(e).__name__}: {e}",flush=True)
+    raise
+   time.sleep(1)
  target=ROOT/"data/jma_daily_snow_depth_2016_2026.csv"
  with target.open("w",encoding="utf-8",newline="") as f:
   w=csv.writer(f);w.writerow(["station_id","date","snow_depth_cm","source","source_url"]);w.writerows(out)
