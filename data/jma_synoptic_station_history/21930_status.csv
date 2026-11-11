@@ -1,0 +1,2 @@
+station_id,station_name,complete_winters,failed_winters,daily_rows,errors
+21930,室蘭,9,1,1631,2022: ValueError: Unrecognized snow cell '-- )' https://www.data.jma.go.jp/stats/etrn/view/daily_s1.php?prec_no=21&block_no=47423&year=2022&month=11&day=&view=p2
