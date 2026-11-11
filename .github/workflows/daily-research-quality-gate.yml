@@ -1,7 +1,5 @@
 name: Daily nationwide ski research quality gate
 on:
-  schedule:
-    - cron: '23 1 * * *'
   workflow_dispatch:
   push:
     paths:
