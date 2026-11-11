@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - '.github/workflows/rebuild-national-cohort.yml'
       - 'data/directory_candidates.csv'
       - 'scripts/build_national_resort_master.py'
       - 'scripts/reconcile_national_osm.py'
