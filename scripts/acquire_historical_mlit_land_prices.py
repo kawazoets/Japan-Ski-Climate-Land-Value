@@ -1,6 +1,6 @@
 """Acquire historical MLIT L01 land-price ZIP from the official download listing.
 
-The 2026 nationwide shapefile includes annual price fields for historical years.
+Obtain the official 2026 data for longitudinal linkage; validate historical fields before use.
 Never fabricate a ZIP URL: discover and validate an official download link.
 """
 import argparse,html.parser,re,urllib.request,urllib.parse,zipfile,io,csv
@@ -17,7 +17,7 @@ def discover():
  req=urllib.request.Request(PAGE,headers={"User-Agent":"Mozilla/5.0 (historical academic research)"})
  with urllib.request.urlopen(req,timeout=45) as f:body=f.read().decode("utf-8","replace")
  p=Links();p.feed(body)
- matches=[urllib.parse.urljoin(PAGE,u) for u in p.urls if re.search(r"L01-26_GML\\.zip",u,re.I)]
+ matches=[urllib.parse.urljoin(PAGE,u) for u in p.urls if re.search(r"L01-26_GML\.zip",u,re.I)]
  return list(dict.fromkeys(matches))
 def main():
  ap=argparse.ArgumentParser();ap.add_argument("--discover-only",action="store_true");args=ap.parse_args()
