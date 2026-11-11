@@ -21,6 +21,7 @@ def main():
  resorts=read(ROOT/"data/national_resort_osm_reconciliation.csv")
  places=[r for r in resorts if r["match_status"]=="one_unverified_facility_geometry" and r["latitude_candidate"] and r["longitude_candidate"]]
  records=read(source)
+ if not records or not {"point_id_2026","latitude","longitude","year","price_jpy_per_sqm","municipality_code","land_use_2026"}.issubset(records[0]):raise SystemExit("Unexpected MLIT panel columns")
  by_point=collections.defaultdict(dict);details={}
  for r in records:
   pid=r["point_id_2026"];year=int(r["year"]);price=float(r["price_jpy_per_sqm"])
