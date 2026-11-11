@@ -7,7 +7,7 @@ import csv,re,time,urllib.request,urllib.parse,collections
 from pathlib import Path
 from bs4 import BeautifulSoup
 ROOT=Path(__file__).resolve().parents[1]
-BASE="https://www.data.jma.go.jp/stats/etrn/select/prefecture00.php"
+BASE="https://www.data.jma.go.jp/stats/etrn/select/prefecture.php"
 def main():
  with (ROOT/"data/national_jma_snow_station_candidates.csv").open(encoding="utf-8-sig",newline="") as f:candidates=list(csv.DictReader(f))
  wanted={r["jma_station_name"] for r in candidates}
@@ -18,11 +18,11 @@ def main():
    req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (noncommercial climate research)"})
    with urllib.request.urlopen(req,timeout=20) as response:html=response.read()
    soup=BeautifulSoup(html,"html.parser")
-   for a in soup.find_all("a",href=True):
+   for a in soup.find_all(["a","area"],href=True):
     href=urllib.parse.urljoin(url,a["href"])
     q=urllib.parse.parse_qs(urllib.parse.urlparse(href).query)
     block=q.get("block_no",[""])[0]
-    name=a.get_text(" ",strip=True)
+    name=a.get("alt","").strip() or a.get_text(" ",strip=True)
     if block and name in wanted:
      discovered[name].add((prec,block))
   except Exception as e:errors.append(f"{prec:02d}: {type(e).__name__}: {str(e)[:100]}")
