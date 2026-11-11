@@ -24,7 +24,7 @@ prefecture,harvest_status,directory_candidates,single_geometry_candidates,ambigu
 徳島県,failed,0,0,0,0,0,,monitor
 愛媛県,ok,3,2,0,0,1,0.667,review_names_and_facility_geometries
 愛知県,ok,1,1,0,0,0,1.000,monitor
-新潟県,ok,44,30,0,0,14,0.682,review_names_and_facility_geometries
+新潟県,ok,45,30,0,0,15,0.667,review_names_and_facility_geometries
 東京都,ok,0,0,0,0,0,,monitor
 栃木県,ok,2,2,0,0,0,1.000,monitor
 沖縄県,failed,0,0,0,0,0,,monitor
@@ -34,7 +34,7 @@ prefecture,harvest_status,directory_candidates,single_geometry_candidates,ambigu
 神奈川県,ok,0,0,0,0,0,,monitor
 福井県,ok,5,4,0,0,1,0.800,review_names_and_facility_geometries
 福岡県,ok,0,0,0,0,0,,monitor
-福島県,ok,16,8,4,0,4,0.500,review_names_and_facility_geometries
+福島県,ok,18,8,4,0,6,0.444,review_names_and_facility_geometries
 秋田県,ok,14,11,1,0,2,0.786,review_names_and_facility_geometries
 群馬県,ok,19,8,0,0,11,0.421,review_names_and_facility_geometries
 茨城県,ok,0,0,0,0,0,,monitor
