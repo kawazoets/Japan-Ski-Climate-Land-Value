@@ -1,0 +1,36 @@
+name: Reconcile nationwide ski resorts with OSM geometry
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/reconcile_national_osm.py'
+permissions:
+  contents: write
+concurrency:
+  group: reconcile-national-osm
+  cancel-in-progress: false
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/reconcile_national_osm.py
+      - name: Save reconciliation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/national_resort_osm_reconciliation.csv reports/national_resort_osm_reconciliation.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Reconcile nationwide resort directory with harvested OSM geometries"
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then exit 0; fi
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
