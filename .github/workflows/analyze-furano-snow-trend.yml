@@ -1,0 +1,28 @@
+name: Analyze observed Furano snow trends
+on:
+  push:
+    paths:
+      - 'scripts/analyze_furano_snow_trend.py'
+      - 'data/jma_snow_winter_season_metrics_2016_2025.csv'
+      - '.github/workflows/analyze-furano-snow-trend.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/analyze_furano_snow_trend.py
+      - name: Save descriptive trend report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/furano_snow_trend_2016_2025.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Publish reproducible Furano observed snow-depth trends"
+          git pull --rebase origin main
+          git push origin HEAD:main
