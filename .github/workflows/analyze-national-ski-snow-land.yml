@@ -1,0 +1,26 @@
+name: National ski snow and land-price exploratory analysis
+on:
+  push:
+    paths:
+      - 'scripts/analyze_national_ski_snow_land.py'
+      - '.github/workflows/analyze-national-ski-snow-land.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/analyze_national_ski_snow_land.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ski_snow_land_exploratory_matched_2016_2026.csv reports/national_ski_snow_land_exploratory_association.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Publish nationwide descriptive snow-versus-land-price association"
+          git pull --rebase origin main
+          git push origin HEAD:main
