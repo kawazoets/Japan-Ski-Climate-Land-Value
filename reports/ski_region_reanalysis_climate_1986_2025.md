@@ -1,9 +1,9 @@
-# Pilot ski-region historical climate: ERA5 reanalysis
+# Nationwide ski-region historical climate: ERA5 reanalysis
 
-- Resort candidates with provisional coordinates: 10
-- Resort-year rows: 320
-- Years with >=100 candidate temperatures: 0/40
-- Failed batches: [(4, '<urlopen error _ssl.c:994: The handshake operation timed out>')]
-- Source: Open-Meteo Historical API, ERA5 gridded reanalysis; **not official JMA observed weather**.
-- Annual temperatures are calendar-year means. Snowfall is summed over Jan-Apr and Nov-Dec of each calendar year, not a single ski winter; do not interpret as a resort's operating season.
-- Resort coordinates are provisional; ERA5 spatial resolution does not resolve mountain slopes or elevation accurately. No causal conclusion about land prices follows from this dataset alone.
+- Resort candidates: 44
+- Resort-year observations: 1310
+- Complete 40-year series: 14/44
+- Failed 10-year requests: 22
+- Failed request details: [('DIR-0016', 2006, 2015, 'HTTP Error 429: Too Many Requests'), ('DIR-0032', 1986, 1995, 'HTTP Error 429: Too Many Requests'), ('DIR-0059', 2006, 2015, 'HTTP Error 429: Too Many Requests'), ('DIR-0059', 2016, 2025, 'HTTP Error 429: Too Many Requests'), ('DIR-0092', 1986, 1995, 'HTTP Error 429: Too Many Requests'), ('DIR-0177', 2016, 2025, 'HTTP Error 429: Too Many Requests'), ('DIR-0195', 1986, 1995, 'HTTP Error 429: Too Many Requests'), ('DIR-0195', 1996, 2005, 'HTTP Error 429: Too Many Requests'), ('DIR-0195', 2006, 2015, '<urlopen error _ssl.c:994: The handshake operation timed out>'), ('DIR-0275', 1986, 1995, 'HTTP Error 429: Too Many Requests'), ('DIR-0294', 2006, 2015, 'HTTP Error 429: Too Many Requests'), ('DIR-0307', 1996, 2005, 'HTTP Error 429: Too Many Requests'), ('DIR-0307', 2006, 2015, 'HTTP Error 429: Too Many Requests'), ('DIR-0321', 1996, 2005, 'HTTP Error 429: Too Many Requests'), ('DIR-0321', 2006, 2015, '<urlopen error _ssl.c:994: The handshake operation timed out>'), ('DIR-0321', 2016, 2025, '<urlopen error _ssl.c:994: The handshake operation timed out>'), ('DIR-0335', 1996, 2005, 'HTTP Error 429: Too Many Requests'), ('DIR-0335', 2006, 2015, 'HTTP Error 429: Too Many Requests'), ('DIR-0335', 2016, 2025, 'HTTP Error 429: Too Many Requests'), ('DIR-0338', 1986, 1995, 'HTTP Error 429: Too Many Requests'), ('DIR-0338', 1996, 2005, 'HTTP Error 429: Too Many Requests'), ('DIR-0338', 2006, 2015, 'HTTP Error 429: Too Many Requests')]
+- ERA5 grid estimates, not JMA observations; provisional coordinates and unresolved elevation bias.
+- Winter snowfall combines Jan–Apr and Nov–Dec in the same calendar year, not an actual ski season.
