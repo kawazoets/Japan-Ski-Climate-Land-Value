@@ -1,0 +1,45 @@
+name: Acquire 40-year nationwide ski-region climate
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  climate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch 1986-2025 historical ERA5 climate for geocoded ski regions
+        run: python scripts/acquire_national_ski_reanalysis_1986_2025.py
+      - name: Validate coverage
+        run: |
+          python - <<'PY'
+          import csv
+          from collections import Counter
+          with open('data/ski_region_reanalysis_climate_1986_2025.csv',encoding='utf-8') as f:r=list(csv.DictReader(f))
+          counts=Counter(int(x['year']) for x in r if x['mean_temperature_c'])
+          assert all(counts[y]>=100 for y in range(1986,2026)),counts
+          print('Climate rows',len(r),'resorts',len({x['candidate_id'] for x in r}))
+          PY
+      - name: Upload 40-year climate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: national-ski-region-climate-1986-2025
+          path: |
+            data/ski_region_reanalysis_climate_1986_2025.csv
+            reports/ski_region_reanalysis_climate_1986_2025.md
+          if-no-files-found: ignore
+      - name: Commit climate data and provenance
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ski_region_reanalysis_climate_1986_2025.csv reports/ski_region_reanalysis_climate_1986_2025.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Add nationwide 1986-2025 ERA5 climate estimates for ski regions"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
