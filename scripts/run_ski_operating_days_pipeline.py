@@ -3,7 +3,7 @@ import csv,datetime,json,re,urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 D=ROOT/"data";R=ROOT/"reports";R.mkdir(exist_ok=True)
-SOURCES=[("memuro","https://www.memuro.net/administration/soshiki/keiei/kanrisya/files/R2jhkokuminn.pdf"),("nagano_policy","https://www.pref.nagano.lg.jp/kankoshin/documents/20_sukizyouhoushin_hontai.pdf"),("nagano_survey","https://www.pref.nagano.lg.jp/kankoshin/documents/30_zittaityousakekka.pdf")]
+SOURCES=[("memuro","https://www.memuro.net/administration/soshiki/keiei/kanrisya/files/R2jhkokuminn.pdf"),("nagano_policy","https://www.pref.nagano.lg.jp/kankoshin/documents/20_sukizyouhoushin_hontai.pdf"),("nagano_survey","https://www.pref.nagano.lg.jp/kankoshin/documents/30_zittaityousakekka.pdf"),("bibai_plan","https://www.city.bibai.hokkaido.jp/uploaded/attachment/16752.pdf"),("mutsu_kamafuse","https://www.city.mutsu.lg.jp/government/gyosei/shiteikanri/files/03_R5_undou_ski.pdf"),("itoigawa_2023","https://www.city.itoigawa.lg.jp/uploaded/attachment/8253.pdf")]
 def read(path):
  with path.open(encoding="utf-8-sig",newline="") as f:return list(csv.DictReader(f))
 def save(path,cols,rows):
