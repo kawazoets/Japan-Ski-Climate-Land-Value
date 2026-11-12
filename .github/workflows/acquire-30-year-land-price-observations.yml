@@ -1,0 +1,55 @@
+name: Acquire and assess 30-year land-price observations
+run-name: 1996-2026 historical land prices - official MLIT
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  historical-land:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download and parse official MLIT 1983-2026 archive
+        run: python scripts/extract_mlit_historical_panel.py
+      - name: Build 1996-2026 observed municipality coverage
+        run: python scripts/build_mlit_1996_2026_coverage.py
+      - name: Validate 30-year coverage and sample sizes
+        run: |
+          python - <<'PY'
+          import csv
+          from collections import Counter
+          with open('data/mlit_1996_2026_municipality_observed_panel.csv',encoding='utf-8') as f:
+              rows=list(csv.DictReader(f))
+          years=Counter(int(r['year']) for r in rows)
+          assert set(years)==set(range(1996,2027)),years
+          assert all(int(r['observed_point_count'])>0 for r in rows)
+          print('Validated',len(rows),'municipality-year summaries over 1996–2026')
+          PY
+      - name: Upload historical dataset and audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mlit-1996-2026-historical-land-observations
+          path: |
+            reports/mlit_historical_panel_audit.md
+            reports/mlit_1996_2026_coverage.md
+            data/mlit_landprice_historical_panel_1983_2026.csv
+            data/mlit_1996_2026_municipality_observed_panel.csv
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Commit audit and municipality panel (not huge raw point panel)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/mlit_historical_panel_audit.md reports/mlit_1996_2026_coverage.md data/mlit_1996_2026_municipality_observed_panel.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "Record official MLIT 1996–2026 historical land-price coverage"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
