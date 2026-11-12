@@ -8,7 +8,14 @@ for r in source:
  if r["match_status"]!="one_unverified_facility_geometry":continue
  try:points.append((r,float(r["latitude_candidate"]),float(r["longitude_candidate"])))
  except (ValueError,TypeError):pass
-assert len(points)>=200
+# Limit requests to regions with matched 1996 and 2026 land-price points
+with (P/"data/ski_resort_observed_land_price_1996_2026.csv").open(encoding="utf-8-sig",newline="") as f:
+ eligible={r["candidate_id"] for r in csv.DictReader(f)
+           if r["radius_km"]=="10" and r["year"]=="2026"
+           and r["median_same_point_change_pct"]
+           and int(r["matched_1996_2026_point_count"] or 0)>=5}
+points=[p for p in points if p[0]["candidate_id"] in eligible]
+assert len(points)>=40,("Unexpectedly few eligible regions",len(points))
 old=P/"data/ski_region_reanalysis_climate_1986_2025.csv"
 fields=["candidate_id","resort_name","year","mean_temperature_c","winter_snowfall_cm","days_observed","source","data_type","coordinate_status"]
 existing={}
@@ -68,4 +75,4 @@ complete=sum(n==40 for n in coverage.values())
  +"- ERA5 grid estimates, not JMA observations; provisional coordinates and unresolved elevation bias.\n"
  +"- Winter snowfall combines Jan–Apr and Nov–Dec in the same calendar year, not an actual ski season.\n",encoding="utf-8")
 print("Complete",complete,"of",len(points),"failures",len(failures))
-print("Coverage target 180; actual",complete)
+print("Land-price-eligible region coverage",complete,"/",len(points))
