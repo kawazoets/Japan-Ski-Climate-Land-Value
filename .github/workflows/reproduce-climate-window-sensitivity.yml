@@ -1,0 +1,34 @@
+name: Reproduce climate window sensitivity
+on:
+  push:
+    paths:
+      - 'scripts/audit_climate_window_sensitivity.py'
+      - 'data/ski_region_reanalysis_climate_1986_2025.csv'
+      - 'data/ski_resort_observed_land_price_1996_2026.csv'
+      - '.github/workflows/reproduce-climate-window-sensitivity.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: climate-window-sensitivity
+  cancel-in-progress: false
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/audit_climate_window_sensitivity.py
+      - name: Commit generated report if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/climate_time_window_sensitivity_reproducible_ja.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Regenerate complete-window climate sensitivity report"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
