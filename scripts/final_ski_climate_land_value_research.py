@@ -21,15 +21,13 @@ def corr(x,y):
  mx=statistics.mean(x);my=statistics.mean(y)
  den=math.sqrt(sum((v-mx)**2 for v in x)*sum((v-my)**2 for v in y))
  return sum((a-mx)*(b-my) for a,b in zip(x,y))/den if den else None
-# Predeclared validity criteria: data completeness does not imply causal identification.
-MIN_MATCHED_REGIONS=40
+# A sample-size threshold alone cannot establish validity or causality.
 def validity_assessment(pairs):
  n=len(pairs)
- if n<MIN_MATCHED_REGIONS:
-  return f"NOT SUFFICIENT: only {n} matched regions; required at least {MIN_MATCHED_REGIONS} for exploratory nationwide comparison."
- return ("EXPLORATORY ONLY: adequate sample count for a descriptive comparison, "
-         "but spatial overlap, urban proximity, land-use and demographic confounding "
-         "remain unadjusted; causal warming effect NOT identified.")
+ return (f"EXPLORATORY ONLY: {n} climate-land matched resort observations. "
+         "No arbitrary minimum sample count is treated as proof of validity. "
+         "Spatial overlap, demographic and tourism confounding, and incomplete "
+         "climate coverage remain; causal warming effect NOT identified.")
 pairs=[]
 for cid,r in regions.items():
  vals=series.get(cid,{})
@@ -69,6 +67,6 @@ lines+=["","## 妥当性判定","",validity_assessment(pairs),"","## 解釈上�
 "- 気候と地価の相関が計算可能でも因果効果ではない。サンプルが少ない場合、相関値の解釈は不適切。",
 "",
 "## 研究の到達点","",
-"本研究の現有データで確立できたのは、30年間のスキー場周辺地価の地域差と、利用可能な気象系列の限定的な比較までである。**地球温暖化が不動産価値をどれほど変えたかという本来の因果的問いには、現状では答えられない。** 追加取得を続けず、未解明として明示して本段階を終了する。"]
+"本研究の現有データで確立できたのは、30年間のスキー場周辺地価の地域差と、利用可能な気象系列の限定的な比較までである。**地球温暖化が不動産価値をどれほど変えたかという本来の因果的問いには、現状では答えられない。** 欠測期間の偏り、地価地点の共有、人口・観光需要等の交絡を検証し、研究目的に対する結論を再評価する必要がある。"]
 (P/"reports/final_ski_climate_land_value_research_ja.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
 print("final report",len(pairs),"matched; climate",len(series))
