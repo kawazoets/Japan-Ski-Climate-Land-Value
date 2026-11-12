@@ -1,8 +1,6 @@
 name: Autonomous ski operating-days research
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '17 2 * * *'
   push:
     paths:
       - 'scripts/run_ski_operating_days_pipeline.py'
