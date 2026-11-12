@@ -46,6 +46,11 @@ def main():
  for r in existing:
   if r["evidence_status"]=="verified" and r["candidate_id"] and r["observed_operating_days"].isdigit():
    matched.append({"candidate_id":r["candidate_id"],"season_start_year":r["season_start_year"],"actual_operating_days":r["observed_operating_days"],"source_url":r["source_url"]})
+ # Also retain unmatched verified observations; never silently drop them from research coverage.
+ save(D/"ski_actual_operating_days_unmatched.csv",["resort_name","season_start_year","actual_operating_days","source_url"],[
+  {"resort_name":r["resort_name"],"season_start_year":r["season_start_year"],"actual_operating_days":r["observed_operating_days"],"source_url":r["source_url"]}
+  for r in verified if r["resort_name"] in set(unmatched) and r["evidence_status"]=="verified" and r["observed_operating_days"].isdigit()
+ ])
  save(D/"ski_actual_operating_days_joined.csv",["candidate_id","season_start_year","actual_operating_days","source_url"],matched)
  seasons={}
  for row in matched:seasons.setdefault(row["candidate_id"],set()).add(row["season_start_year"])
