@@ -1,0 +1,29 @@
+{
+  "research_question": "How has climate warming affected real estate values in Japanese ski resort regions?",
+  "primary_real_estate_period": {
+    "start_year": 1996,
+    "end_year": 2026,
+    "years": 30
+  },
+  "climate_reference_period": {
+    "start_year": 1986,
+    "end_year": 2026,
+    "role": "longer climate baseline"
+  },
+  "primary_outcome": "regional real estate and land value changes",
+  "explanatory_variables": [
+    "temperature",
+    "snowfall",
+    "snow cover"
+  ],
+  "secondary_indicators": [
+    "ski operating seasons",
+    "tourism activity"
+  ],
+  "rules": [
+    "Do not substitute ski operating days for the primary real-estate outcome",
+    "Do not treat observed association as causation",
+    "Do not assume 30-year historical data have already been collected",
+    "Report missing years and changes in data definitions explicitly"
+  ]
+}
