@@ -1,0 +1,25 @@
+name: Publish actual 30-year ski-region land-value findings
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Analyze 1996-2026 regional property values
+        run: python scripts/report_30year_ski_region_property_values.py
+      - name: Publish actual 30-year results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/30year_ski_region_property_value_findings.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish actual 30-year ski-region land-price findings"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
