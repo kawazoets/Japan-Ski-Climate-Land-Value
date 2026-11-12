@@ -21,6 +21,15 @@ def corr(x,y):
  mx=statistics.mean(x);my=statistics.mean(y)
  den=math.sqrt(sum((v-mx)**2 for v in x)*sum((v-my)**2 for v in y))
  return sum((a-mx)*(b-my) for a,b in zip(x,y))/den if den else None
+# Predeclared validity criteria: data completeness does not imply causal identification.
+MIN_MATCHED_REGIONS=40
+def validity_assessment(pairs):
+ n=len(pairs)
+ if n<MIN_MATCHED_REGIONS:
+  return f"NOT SUFFICIENT: only {n} matched regions; required at least {MIN_MATCHED_REGIONS} for exploratory nationwide comparison."
+ return ("EXPLORATORY ONLY: adequate sample count for a descriptive comparison, "
+         "but spatial overlap, urban proximity, land-use and demographic confounding "
+         "remain unadjusted; causal warming effect NOT identified.")
 pairs=[]
 for cid,r in regions.items():
  vals=series.get(cid,{})
@@ -51,7 +60,7 @@ f"- 地価変化率と冬季積雪トレンドのPearson相関: {fmt(corr(change
 "### 結合できた地域（10km圏）","","| 地域 | 1996–2026地価変化 | 気温変化 ℃/10年 | 積雪変化 cm/10年 | 共通地価地点数 |","|---|---:|---:|---:|---:|"]
 for name,price,t,snow,n in sorted(pairs,key=lambda x:x[1]):
  lines.append(f"| {name} | {price:+.1f}% | {t:+.3f} | {snow:+.1f} | {n} |")
-lines+=["","## 解釈上の制約","",
+lines+=["","## 妥当性判定","",validity_assessment(pairs),"","## 解釈上の制約","",
 "- 気象はERA5再解析の格子推計値であり、山岳斜面の現地観測ではない。1986〜2025年の一部地域のみで、2026年気象は含まれない。",
 "- 冬季積雪は同一暦年の1〜4月・11〜12月を合算しており、スキーシーズン単位ではない。",
 "- 地価は2026年に存続する標準地の名目価格であり、調査地点の生存バイアスがある。リゾート物件の取引価格ではない。",
