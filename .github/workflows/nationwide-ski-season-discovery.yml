@@ -1,0 +1,38 @@
+name: Nationwide ski resort season source discovery
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '43 2 * * 1,4'
+  push:
+    paths:
+      - 'scripts/discover_national_ski_season_sources.py'
+      - '.github/workflows/nationwide-ski-season-discovery.yml'
+permissions:
+  contents: write
+concurrency:
+  group: nationwide-ski-season-discovery
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install beautifulsoup4
+      - name: Discover nationwide source pages and season date leads
+        run: python scripts/discover_national_ski_season_sources.py
+      - name: Publish audit and provenance
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/national_ski_season_page_index.csv data/national_ski_season_date_candidates.csv data/national_ski_season_fetch_errors.csv reports/national_ski_season_discovery.json reports/national_ski_season_discovery.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish nationwide ski season source discovery"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
