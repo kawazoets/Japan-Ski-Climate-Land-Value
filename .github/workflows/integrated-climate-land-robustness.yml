@@ -1,0 +1,35 @@
+name: Integrated climate-land robustness audit
+on:
+  push:
+    paths:
+      - 'scripts/integrated_climate_land_robustness.py'
+      - 'data/ski_region_reanalysis_climate_1986_2025.csv'
+      - 'data/ski_resort_observed_land_price_1996_2026.csv'
+      - 'data/national_resort_osm_reconciliation.csv'
+      - '.github/workflows/integrated-climate-land-robustness.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: integrated-climate-land-robustness
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/integrated_climate_land_robustness.py
+      - name: Commit audit output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/integrated_climate_land_robustness_ja.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Update integrated climate-land robustness audit"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
