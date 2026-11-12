@@ -1,0 +1,36 @@
+name: Build 30-year ski-region land-price histories
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve 1983-2026 official MLIT price records
+        run: python scripts/extract_mlit_historical_panel.py
+      - name: Spatially link 1996-2026 observed prices to ski regions
+        run: python scripts/link_ski_resorts_30year_land_prices.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: ski-region-land-prices-1996-2026
+          path: |
+            data/ski_resort_observed_land_price_1996_2026.csv
+            reports/ski_resort_30year_land_price_observed.md
+            reports/mlit_historical_panel_audit.md
+      - name: Commit resort-region results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ski_resort_observed_land_price_1996_2026.csv reports/ski_resort_30year_land_price_observed.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish observed 1996-2026 land-price histories around ski regions"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
