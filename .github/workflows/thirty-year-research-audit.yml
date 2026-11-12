@@ -1,0 +1,30 @@
+name: Thirty-year climate and real estate research audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/audit_thirty_year_research_readiness.py'
+      - '.github/workflows/thirty-year-research-audit.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/audit_thirty_year_research_readiness.py
+      - name: Commit audit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/thirty_year_research_data_gate.json reports/thirty_year_research_data_gate.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish 30-year research data coverage audit"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
