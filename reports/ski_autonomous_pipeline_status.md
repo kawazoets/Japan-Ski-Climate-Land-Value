@@ -2,9 +2,9 @@
 
 Status: **BLOCKED_INSUFFICIENT_OPERATING_DAY_EVIDENCE**
 
-Verified cohort-matched operating-day rows: 0
+Verified cohort-matched operating-day rows: 3
 
-Resorts with at least two seasons: 0
+Resorts with at least two seasons: 1
 
 Unverified source snippets: 50
 
