@@ -1,9 +1,9 @@
 {
-  "date_utc": "2026-11-11",
+  "date_utc": "2026-11-12",
   "status": "BLOCKED_INSUFFICIENT_OPERATING_DAY_EVIDENCE",
   "matched_actual_operating_day_rows": 0,
   "resorts_with_two_or_more_seasons": 0,
-  "unverified_official_pdf_leads": 44,
+  "unverified_official_pdf_leads": 50,
   "unmatched_verified_resorts": [
     "芽室町営スキー場"
   ],
@@ -23,6 +23,24 @@
     {
       "source_id": "nagano_survey",
       "url": "https://www.pref.nagano.lg.jp/kankoshin/documents/30_zittaityousakekka.pdf",
+      "status": "parsed",
+      "error": ""
+    },
+    {
+      "source_id": "bibai_plan",
+      "url": "https://www.city.bibai.hokkaido.jp/uploaded/attachment/16752.pdf",
+      "status": "parsed",
+      "error": ""
+    },
+    {
+      "source_id": "mutsu_kamafuse",
+      "url": "https://www.city.mutsu.lg.jp/government/gyosei/shiteikanri/files/03_R5_undou_ski.pdf",
+      "status": "parsed",
+      "error": ""
+    },
+    {
+      "source_id": "itoigawa_2023",
+      "url": "https://www.city.itoigawa.lg.jp/uploaded/attachment/8253.pdf",
       "status": "parsed",
       "error": ""
     }

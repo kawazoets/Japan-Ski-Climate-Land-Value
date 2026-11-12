@@ -6,7 +6,7 @@ Verified cohort-matched operating-day rows: 0
 
 Resorts with at least two seasons: 0
 
-Unverified source snippets: 44
+Unverified source snippets: 50
 
 Unmatched municipal resort names: 芽室町営スキー場
 
