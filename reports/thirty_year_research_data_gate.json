@@ -1,0 +1,35 @@
+{
+  "run_date_utc": "2026-11-12",
+  "research_question": "How has climate warming affected real estate values in Japanese ski resort regions?",
+  "required_land_price_period": [
+    1996,
+    2026
+  ],
+  "available_comparable_land_price_endpoints": [
+    2016,
+    2026
+  ],
+  "required_climate_start_year": 1986,
+  "available_winter_snow_start_years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "unique_resorts_with_land_buffer_records": 451,
+  "unique_jma_stations_in_winter_metrics": 100,
+  "land_buffer_row_counts_by_radius": {
+    "3": 451,
+    "5": 451,
+    "10": 451,
+    "20": 451
+  },
+  "status": "THIRTY_YEAR_DATA_NOT_YET_AVAILABLE",
+  "must_not_claim": "A 30-year climate-real-estate effect has been established"
+}
